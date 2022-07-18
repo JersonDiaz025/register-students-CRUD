@@ -2,14 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const routes = require('../routes/routes.js');
+const cors = require('cors');
 
 require('dotenv').config({path: '../.env'});
 
 const app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 
 const port = process.env.PORT || 3001;

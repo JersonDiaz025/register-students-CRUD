@@ -71,7 +71,6 @@
     border-radius: 5px;
 }
 
-
 .container-btn{
     display: flex;
     justify-content: center;
@@ -83,7 +82,7 @@
     width: 100%;
     max-width: 400px;
     padding: 6px;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 1px solid rgba(24, 26, 24, 0.438);
     font-weight: bold;
     background: #b6afaf63;

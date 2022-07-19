@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Todo = require('../models/todo');
+// const Todo = require('../models/todo');
+const RegisterStudents = require('../models/register-students');
 
 
 router.get('/', (req, res) => {
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 // view all todos
-router.get('/getAllTo_do', (req, res) => {
+router.get('/AllStudents', (req, res) => {
     Todo.find()
     .then(data => {
         res.json({response: "success", data});
@@ -16,13 +17,23 @@ router.get('/getAllTo_do', (req, res) => {
 } )
 
 // get params from form
-router.post('/add-todo', async (req, res) => {
+router.post('/add-student-data', async (req, res) => {
 
-    const firsLetter = req.body.text.charAt(0);
-    const resultName = firsLetter.toUpperCase() + req.body.text.slice(1);
+    const calification = req.body.calification;
+    const direction = req.body.direction;
+    const email = req.body.email;
+    const name = req.body.name;
+    const phone_number = req.body.phone_number;
 
-    const todo = new Todo({text: resultName, completed: false})
-    await todo.save()
+    const students = new RegisterStudents({
+        calification: calification,
+        direction: direction,
+        email: email,
+        name: name,
+        phone_number: phone_number,
+    })
+    await students.save();
+
 });
 
 

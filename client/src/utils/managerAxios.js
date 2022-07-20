@@ -10,5 +10,6 @@ export function sendDataAxios(data) {
         email: data?.email[0],
         name: data?.name[0],
         phone_number: data?.phone_number[0],
+        asignatura : data?.asignatura[0],
     });
 }

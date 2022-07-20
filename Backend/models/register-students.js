@@ -7,6 +7,7 @@ const registerStudentSchema = new mongoose.Schema(
         email: String,
         name: String,
         phone_number: String,
+        asignatura: String
     }
 );
 

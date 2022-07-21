@@ -1,10 +1,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 
+:root{
+    --dark: #2b2d42;
+    --light: #adb5bd;
+    --border: #dee2e6;
+    --border-btn: #edf2f4;
+    --icon-delete: #FF0008;
+    --icon-edit: #FFD100;
+}
+
 html, body{
     margin: 0;
     padding: 0;
     font-family: 'Secular One', sans-serif;
+    box-sizing: border-box;
+
 }
 
 .container-main-form {
@@ -83,7 +94,7 @@ html, body{
     max-width: 290px;
     padding: 10px;
     border-radius: 7px;
-    border: 1px solid rgba(24, 26, 24, 0.438);
+    border: 2px solid var(--border);
     font-weight: bold;
     /* background: #b6afaf63; */
 }
@@ -129,15 +140,6 @@ html, body{
     /* margin-top: 4.5px; */
 }
 
-/* .image2{
-    margin-top: 1px;
-    width: 40px;
-    height: 40px;
-}  */
-/* .title{
-    font-size: 20px;
-    margin-left: 10px;
-} */
 .container_links{
     width: 80%;
     display: flex;
@@ -159,58 +161,76 @@ html, body{
 /* -----------------------------------------------------------------------table----------------------------------------------------------------- */
 
 .container-table{
-    width: 90%;
-    margin: 100px auto;
+    width: 95%;
+    margin: 250px auto;
 }
 
 th{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight:lighter;
-
-} 
-#site-main{
+    font-weight: lighter;
+}
+.main{
     font-family: 'Barlow', sans-serif;
 }
 
-#site-main .container .box-nav > a{
-    font-size: 1em;
-    padding: .5em 1em;
-}
-
-#site-main .container form{
-    margin: 2em 0;
-}
-
 table{
-    border-spacing: 0px;
-    width: 90%;
+    align-content: center;
+    border-spacing: 0;
+    width: 86%;
+    box-shadow: 3px  2px 8px 8px#888888;
+    border-radius: 5px;
+    margin: auto;
 }
 
 .table td, .table th{
     padding: .75em;
-    vertical-align: top;
     text-align: center;
     border-top: 1px solid var(--border);
 }
 
-.table td > a.btn{
-    padding: .3em 1em;
-    font-size: 1.1em;
-    margin: 0 .2em;
+.container-actions{
+    /* width: fit-content; */
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.btn-delete{
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 0.1px solid var(--border-btn);
+    cursor: pointer;
+    background: var(--icon-delete);
+}
+.btn-edit{
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 0.1px solid var(--border-btn);
+    cursor: pointer;
+    background: var(--icon-edit);
 }
 
-.table tr:hover{
-    background-color:#06d6a0 ;
-}
 
-.table tr:hover td > a{
-    box-shadow: none;
-}
-
-.table .thead-dark th{
-    color: rgb(22, 21, 21);
-    background-color: rgb(79, 184, 216) ;
+.thead-dark th{
+    color: #fff;
+    background-color: var(--dark);
     border-color: #32383e;
+}
+.icon-delete{
+    width: 20px;
+    height: auto;   
+}
+.icon-edit{
+    width: 20px;
+    height: auto;
 }
 
 @media only screen and (max-width: 1024px){
@@ -229,6 +249,17 @@ table{
     td{
         border: none;
         position: relative;
+    }
+    .container-table{
+        /* display: flex; */
+        justify-content: center;
+        /* align-items: center; */
+    }
+    .table{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 }

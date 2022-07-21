@@ -6,9 +6,9 @@ function App() {
 
     return (
       <div>
-        <Navbar />
-        {/* <Form />
-        <Content /> */}
+       {/* <Navbar />  */}
+        <Form /> 
+        <Content />
       </div>
     )
   }

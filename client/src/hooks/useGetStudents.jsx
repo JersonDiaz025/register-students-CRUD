@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
-
 /**
  * It's a function that returns an array of objects.
  * returns An array of objects.
 */
 export function useGetInfoStudents() {
 
-    const url = 'http://localhost:3004/AllStudents';
+    const url = 'http://localhost:3004/all-students';
     const [infoStudents, setInfoStudents] = useState([]);
 
     useEffect(() => {

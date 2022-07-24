@@ -2,6 +2,23 @@ import axios from "axios";
 
 const BASE_URL = 'http://localhost:3004'
 
+
+// get data students
+const getInfoStudents = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/all-students`)
+        const { data } = response;
+        if (data.response === 'success') {
+            return response.data
+        } else {
+            console.log('Error getting data');
+        }
+    } catch (err) {
+        console.log(err)
+    }
+
+}
+
 // Method POST
 const postData = async (data) => {
     try {
@@ -14,6 +31,7 @@ const postData = async (data) => {
             phone_number: data?.phone_number[0],
             asignatura : data?.asignatura[0],
         });
+
     } catch (err) {
         console.log(err)
     }
@@ -26,16 +44,16 @@ const postData = async (data) => {
 // }
 
 
-
 // method delete
 const deleteInfo = async (_id) => {
     try {
         await axios.delete(`${BASE_URL}/delete-students/${_id}`);
 
+        
     } catch (err) {
         console.log(err)
     }
 }
 
 
-export {postData, deleteInfo}
+export {postData, deleteInfo, getInfoStudents}

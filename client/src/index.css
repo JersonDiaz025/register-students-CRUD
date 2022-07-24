@@ -103,6 +103,7 @@ html, body{
 .container-main{
     width: 100%;
     box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .container-navb{
     background-color:rgba(241, 239, 237, 0.973);
@@ -132,6 +133,7 @@ html, body{
     margin-left: 2px;
     color: #272626;
     font-size: 26px;
+    
 }
 
 .image_home{
@@ -141,7 +143,7 @@ html, body{
 }
 
 .container_links{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -156,7 +158,8 @@ html, body{
     list-style: none;
     color: rgb(32, 29, 29);
     font-size: 18px;
-    font-weight: bold;
+    /* font-weight: bold; */
+    /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 }
 /* -----------------------------------------------------------------------table----------------------------------------------------------------- */
 
@@ -262,4 +265,58 @@ table{
         align-items: center;
     }
 
+}
+
+/* -----------------------------------------Loader */
+
+.modal{
+    width: 100%;
+    position: fixed;
+    inset: 0;
+    filter: blur(0.6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 47.5%;
+    left: 50%;
+    right: 50%;
+    position: absolute;
+    font-family: sans-serif;
+    font-weight:bolder;
+    font-size: 16px;
+}
+
+.container_modal{
+    position: relative;
+    width: 100%;
+    min-width: 250px;
+    height: 100%;
+    box-shadow: 1px 1px 15px rgba(7, 7, 7, 0.589);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(246, 242, 242, 0.807);
+}
+
+.loader{
+    height: 120px;
+    width: 120px;
+    border-top: 5px solid #1fcc61;
+    border-right: 5px solid transparent;
+    border-radius: 50%;
+    animation: 1s spin linear infinite;
+}
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }

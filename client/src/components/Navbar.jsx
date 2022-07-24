@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet, Link } from "react-router-dom";
 import Title from './Title';
 
 const Navbar = () => {
@@ -11,29 +12,30 @@ const Navbar = () => {
                         <Title data={"Student Registration"} styles={`${"title-nav"}`}/>
                     </div>
                     <div className="container_links">
-                        <a href="/" className="links">
+                        <Link to="/" className="links">
                             <ul>
                                 <li>Home</li>
                             </ul>
-                        </a>
-                        <a href="/get-peliculas" className="links">
+                        </Link>
+                        <Link to="/students" className="links">
                             <ul>
-                                <li>Students</li>
+                                <li>All students</li>
                             </ul>
-                        </a>
-                        <a href="" className="links">
+                        </Link>
+                        <Link to="/register" className="links">
                             <ul>
-                                <li>About</li>
+                                <li>Register student</li>
                             </ul>
-                        </a>
-                        <a href="" className="links">
+                        </Link>
+                        <Link to="/contact" className="links">
                             <ul>
                                 <li>Contact</li>
                             </ul>
-                        </a>
+                        </Link>
                     </div>
                 </nav>
             </div>
+            <Outlet/>
         </div>
     );
 }

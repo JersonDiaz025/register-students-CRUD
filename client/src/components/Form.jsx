@@ -20,6 +20,15 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     postData(data);
+    setData(
+      {
+        name: [],
+        calification: [],
+        email: [],
+        phone_number: [],
+        direction: [],
+        asignatura: []
+      });
   }
 
 /**

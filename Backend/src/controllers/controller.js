@@ -10,10 +10,9 @@ controller.getHome = (req, res) => {
 // controller getAllstudents
 controller.getAllInfoStudents = async (req, res) => {
     try {
-        await RegisterStudents.find()
-        .then(data => {
-            res.json({response: "success", data});
-        });
+        const data = await RegisterStudents.find();
+        res.json({response: "success", data});
+
     } catch (err) {
         console.log(err);
         res.json({response: 'Error internal server'})
@@ -45,15 +44,20 @@ controller.updateInfoStudents = async (req, res) => {
     const { id } = req.params;
     const { calification, direction, email, name, phone_number, asignatura } = req.body;
     // console.log(calification)
+    try {
 
-    await RegisterStudents.findByIdAndUpdate({_id: id}, {'$set': {
-        calification: calification,
-        direction: direction,
-        email: email,
-        name: name,
-        phone_number: phone_number,
-        asignatura: asignatura,
-    }});
+        await RegisterStudents.findByIdAndUpdate({_id: id}, {
+            calification: calification,
+            direction: direction,
+            email: email,
+            name: name,
+            phone_number: phone_number,
+            asignatura: asignatura,
+        });
+        res.json('dato actualizado')
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 

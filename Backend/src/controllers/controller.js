@@ -34,6 +34,7 @@ controller.postDataFormulary = async (req, res) => {
     });
     try {
         await students.save();
+        res.json({response: 'guardado correctamente'})
     } catch (err) {
         console.log(err);
     }
@@ -66,7 +67,7 @@ controller.deleteStudents = async (req, res) => {
     const id = req.params.id;
     try {
         await RegisterStudents.findByIdAndDelete({_id: id})
-        // res.json(`usuario con el ${id} eliminado`)
+        res.json(`usuario con el ${id} eliminado`)
     } catch (err) {
         console.log(err)
     }

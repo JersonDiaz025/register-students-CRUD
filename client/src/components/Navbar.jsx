@@ -8,7 +8,7 @@ const Navbar = () => {
             <div className="container-navb">
                 <nav className="navb">
                     <div className="sub_container">
-                        <img className="image_home" src="../src/assets/students-icon.png" alt="image-home"/>
+                        <img className="image" src="../src/assets/students-icon.png" alt="image-home"/>
                         <Title data={"Student Registration"} styles={`${"title-nav"}`}/>
                     </div>
                     <div className="container_links">

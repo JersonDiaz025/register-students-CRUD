@@ -6,32 +6,37 @@ const Content = () => {
 
   const [students, setStudent] = useState();
 
-  useEffect(() => {
+  const q = getInfoStudents()
 
+  useEffect(() => {
+    q.then(data=>setStudent(data))
     console.log(students)
-  },[students])
-
-  useEffect(() => {
-    updateStudent()
   },[])
 
-  const updateStudent = async() => {
-    console.log('fue llamada')
-    await getInfoStudents()
-    .then((data) => setStudent(data))
-    
-  }
+  // useEffect(() => {
+  //   // updateStudent()
+  // })
 
 
-  
+
+  // const updateStudent = async() => {
+  //   console.log('fue llamada')
+  //   getInfoStudents()
+  //   // .then((data) => setStudent(data))
+  //   console.log(students)
+
+  // }
+
+
+
   const handleEditStudents = (items) => {
     // console.log(items)
   }
 
-  const handleDeleteStudents = (e, _id) => {
+  const handleDeleteStudents = async(e, _id) => {
     e.preventDefault();
-    deleteInfo(_id)
-    updateStudent()
+    await deleteInfo(_id);
+    // await updateStudent();
   }
 
   return (
@@ -67,7 +72,7 @@ const Content = () => {
                         <img src='../src/assets/delete-icon.png' alt='icon-delte' className='icon-delete' />
                       </button>
                       <button className="btn-edit">
-                        <img src='../src/assets/edit.png' alt='edit-icon' className='icon-edit' onClick={(e) => handleEditStudents(items)} />
+                        <img src='../src/assets/edit.png' alt='edit-icon' className='icon-edit' onClick={(e) => handleEditStudents(e, items)} />
                       </button>
                     </td>
                   </tr>

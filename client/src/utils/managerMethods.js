@@ -4,7 +4,7 @@ const BASE_URL = 'http://localhost:3004'
 
 
 // get data students
-const getInfoStudents = async () => {
+const getInfoStudents = async() => {
     try {
         const response = await axios.get(`${BASE_URL}/all-students`)
         const { data } = response;
@@ -49,7 +49,6 @@ const deleteInfo = async (_id) => {
     try {
         await axios.delete(`${BASE_URL}/delete-students/${_id}`);
 
-        
     } catch (err) {
         console.log(err)
     }

@@ -29,8 +29,7 @@ const postData = async (data) => {
             name: data.name[0],
             phone_number: data.phone_number[0],
             asignatura: data.asignatura[0],
-        })
-        .then(data => console.log(data))
+        });
 
     } catch (err) {
         console.log(err)

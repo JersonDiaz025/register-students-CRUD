@@ -1,20 +1,10 @@
 import { useState, useEffect } from "react";
 import {postData } from '../utils/managerMethods';
 import Title from "./Title";
+import Popup from "./Popup";
 // import Content from "./Content";
 
 const Form = ({updateStudent}) => {
-
-  // const [students, setStudent] = useState();
-
-  // useEffect(() => {
-  //   updateStudent()
-  // },[])
-
-  // const updateStudent = async() => {
-  //   getInfoStudents()
-  //   .then(response=> setStudent(response))
-  // }
 
   const [data, setData] = useState({
     name: [],
@@ -31,7 +21,7 @@ const Form = ({updateStudent}) => {
  */
   const handleSubmit = async(e) => {
     e.preventDefault();
-    await postData(data);
+    await postData(data)
     setData({
       name: [],
       calification: [],
@@ -41,6 +31,7 @@ const Form = ({updateStudent}) => {
       asignatura: []
     });
     updateStudent()
+    setPopup({status:true})
   }
 
 /**
@@ -66,27 +57,25 @@ const Form = ({updateStudent}) => {
   }
 
     return (
-      <div>
-        <div className='container-main-form'>
-          <div className='container-form'>
-            <div className="container-header">
-              <img src="../src/assets/students-icon.png" alt="image-student" className="image"></img>
-              <Title data={"Student Registration System"} styles={`${"title-form"}`} />
-            </div>
-            <form className='form' onSubmit={handleSubmit}>
-              <input id="input" placeholder="Nombre del Estudiante" name="name" type="text" onChange={handleChange} value={values.name} required/>
-              <input id="input" placeholder="Calificación del estudiante" name="calification" type="number" value={values.calification} onChange={handleChange}  required/>
-              <input id="input" placeholder="Correo electrónico" name="email" type="email" onChange={handleChange} value={values.email} required/>
-              <input id="input" placeholder="809-444-5555" type="tel" name="phone_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={values.phone_number} onChange={handleChange}  required/>
-              <input id="input" placeholder="Dirección" name="direction" onChange={handleChange} value={values.direction} required/>
-              <input id="input" placeholder="Asignatura" name="asignatura" type="text" onChange={handleChange} value={values.asignatura} required/>
-              <div className='container-btn'>
-                <button type="submit">Submit</button>
-              </div>
-            </form>
+
+      <div className='container-main-form'>
+        <div className='container-form'>
+          <div className="container-header">
+            <img src="../src/assets/students-icon.png" alt="image-student" className="image"></img>
+            <Title data={"Student Registration System"} styles={`${"title-form"}`} />
           </div>
+          <form className='form' onSubmit={handleSubmit}>
+            <input id="input" placeholder="Nombre del Estudiante" name="name" type="text" onChange={handleChange} value={values.name} required/>
+            <input id="input" placeholder="Calificación del estudiante" name="calification" type="number" value={values.calification} onChange={handleChange}  required/>
+            <input id="input" placeholder="Correo electrónico" name="email" type="email" onChange={handleChange} value={values.email} required/>
+            <input id="input" placeholder="809-444-5555" type="tel" name="phone_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={values.phone_number} onChange={handleChange}  required/>
+            <input id="input" placeholder="Dirección" name="direction" onChange={handleChange} value={values.direction} required/>
+            <input id="input" placeholder="Asignatura" name="asignatura" type="text" onChange={handleChange} value={values.asignatura} required/>
+            <div className='container-btn'>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
         </div>
-        {/* <Content students={students}/> */}
       </div>
     )
 }

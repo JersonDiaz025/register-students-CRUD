@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { useState, useEffect } from "react";
 import { deleteInfo } from '../utils/managerMethods';
 
@@ -7,22 +6,13 @@ const Content = ({students, updateStudent}) => {
 
   // const [students, setStudent] = useState();
 
-  useEffect(() => {
-    updateStudent11()
-  },[])
-
-  const updateStudent11 = async() => {
-    updateStudent()
-  }
-
   const handleEditStudents = (items) => {
     // console.log(items)
   }
 
   const handleDeleteStudents = async(_id) => {
-    await deleteInfo(_id)
-    // .then(data=>console.log(data))
-    await updateStudent11()
+    await deleteInfo(_id);
+    await updateStudent();
   }
 
   return (

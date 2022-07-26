@@ -34,7 +34,7 @@ controller.postDataFormulary = async (req, res) => {
     });
     try {
         await students.save();
-        res.json({response: 'guardado correctamente'})
+        res.json({response: 'Successfully saved'})
     } catch (err) {
         console.log(err);
     }

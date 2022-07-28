@@ -21,7 +21,7 @@ const getInfoStudents = async() => {
 // Method POST
 const postData = async (data) => {
     try {
-        await axios.post(`${BASE_URL}/add-student-data`, {
+        const response = await axios.post(`${BASE_URL}/add-student-data`, {
 
             calification: parseInt(data.calification[0]),
             direction: data.direction[0],
@@ -30,6 +30,7 @@ const postData = async (data) => {
             phone_number: data.phone_number[0],
             asignatura: data.asignatura[0],
         });
+        return response
 
     } catch (err) {
         console.log(err)

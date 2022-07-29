@@ -13,7 +13,7 @@ const ModalEdit = (props) => {
                 <form className='form-modal'>
                     <div className='container-label'>
                         <label>Nombre del Estudiante</label>
-                        <input id="input-modal" name="name" type="text"  />
+                        <input id="input-modal" name="name" type="text" />
                     </div>
                     <div  className='container-label'>
                         <label>Calificación del estudiante </label>

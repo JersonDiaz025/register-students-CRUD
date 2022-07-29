@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@100;200;300;400;500;600;700&display=swap);
     
 
-.block {overflow:hidden;}
+
 
 :root{
     --dark: #2b2d42;
@@ -195,8 +195,8 @@ html, body{
 /* -----------------------------------------------------------------------table----------------------------------------------------------------- */
 
 .container-table{
-    width: 95%;
-    margin: 250px auto;
+    width: 100%;
+    margin: 100px auto;
 }
 
 th{
@@ -273,6 +273,13 @@ tbody tr:hover{
     height: auto;
 }
 
+.count{
+    color: #79807b;
+    font-size: 2em;
+    position: absolute;
+    transform: translate(180px, 0px);
+}
+
 @media only screen and (max-width: 1024px){
     table, thead, tbody, th, td, tr{
         display: block;
@@ -301,7 +308,7 @@ tbody tr:hover{
         justify-content: center;
         align-items: center;
     }
-   
+
 }
 
 /* -----------------------------------------Loader */
@@ -310,7 +317,7 @@ tbody tr:hover{
     width: 100%;
     position: fixed;
     inset: 0;
-    filter: blur(0.6px);
+    backdrop-filter: blur(0.6px);;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -320,7 +327,7 @@ tbody tr:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 47.5%;
+    top: 48.5%;
     left: 50%;
     right: 50%;
     position: absolute;
@@ -364,10 +371,9 @@ tbody tr:hover{
 .container{
     width: 100%;
     /* background-color: #32cf6e; */
-    /* inset: 0; */
+    inset: 0;
     backdrop-filter: blur(0.6px);
-    /* filter: blur(0.6px); */
-    /* position: absolute; */
+    position: fixed;
     top: 10px;
     display: flex;
     justify-content: center;
@@ -392,7 +398,7 @@ tbody tr:hover{
     position: relative;
     width: 100%;
     max-width: 400px;
-    height: 15%;
+    height: 18%;
     box-shadow: 1px 1px 15px rgba(7, 7, 7, 0.589);
     display: flex;
     justify-content: center;
@@ -401,6 +407,24 @@ tbody tr:hover{
     background: rgba(246, 242, 242, 0.807);
 }
 
+.container-btn-popup{
+    width: 90%;
+    position: absolute;
+    top: 138px;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-popup{
+   width: 30%;
+   cursor: pointer;
+   padding: 4px;
+   border-radius: 6px;
+   border: none;
+   color: #101110;
+   /* font-size: 1rem; */
+   background-color: #9aa59e2c;
+   font-weight: 800;
+}
 .icon{
     position: absolute;
     top: 0px;

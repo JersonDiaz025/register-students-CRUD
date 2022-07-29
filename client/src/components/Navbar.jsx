@@ -8,7 +8,7 @@ const Navbar = () => {
             <nav className="navb">
                 <div className="sub_container">
                     <img className="image" src="../src/assets/students-icon.png" alt="image-home" />
-                    <Title data={"Student Registration"} styles={`${"title-nav"}`} />
+                    <Title data={"Student Registration"} stylesTitle={`${"title-nav"}`} />
                 </div>
                 <div className="container_links">
                     <Link to="/" className="links">

@@ -3,7 +3,8 @@ import React from 'react';
 const Title = (props) => {
     return (
         <div>
-            <div className={`${props.styles}`}>{props.data}</div>
+             <em className={`${props.stylesCount}`}>{props?.count}</em>
+            <div className={`${props.stylesTitle}`}>{props?.data}</div>
         </div>
     );
 }

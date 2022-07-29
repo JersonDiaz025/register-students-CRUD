@@ -61,7 +61,7 @@ const Form = ({updateStudent}) => {
       <div className='container-form'>
         <div className="container-header">
           <img src="../src/assets/students-icon.png" alt="image-student" className="image"></img>
-          <Title data={"Student Registration System"} styles={`${"title-form"}`} />
+          <Title data={"Student Registration System"} stylesTitle={`${"title-form"}`} />
         </div>
         <form className='form' onSubmit={handleSubmit}>
           <input id="input" placeholder="Nombre del Estudiante" name="name" type="text" onChange={handleChange} value={values.name} required/>

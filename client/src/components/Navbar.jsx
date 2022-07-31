@@ -4,39 +4,42 @@ import Title from './Title';
 
 const Navbar = () => {
     return (
-        <div className="container-main">
-            <div className="container-navb">
-                <nav className="navb">
-                    <div className="sub_container">
-                        <img className="image_home" src="../src/assets/students-icon.png" alt="image-home"/>
-                        <Title data={"Student Registration"} styles={`${"title-nav"}`}/>
-                    </div>
-                    <div className="container_links">
+        <nav className='sidebar'>
+            <nav className='sidebar-container'>
+                <div className='sidebar-logo-container'>
+                    <Title data={"Student Registration"} stylesTitle={`${"title-nav"}`} />
+                    <img
+                        src="../src/assets/students-icon.png"
+                        alt="image-home"
+                        className='image-nav'
+                    />
+                </div>
+                <div className='sidebar-container'>
+                    <div className='sidebar-items'>
                         <Link to="/" className="links">
-                            <ul>
-                                <li>Home</li>
-                            </ul>
+                            {/* <img src='../src/assets/icons/home.svg'/> */}
+                            <span>Home</span>
                         </Link>
                         <Link to="/students" className="links">
-                            <ul>
-                                <li>All students</li>
-                            </ul>
+                            <span>All students</span>
                         </Link>
                         <Link to="/register" className="links">
-                            <ul>
-                                <li>Register student</li>
-                            </ul>
+                            Register student
                         </Link>
                         <Link to="/contact" className="links">
-                            <ul>
-                                <li>Contact</li>
-                            </ul>
+                            Contact
                         </Link>
                     </div>
-                </nav>
-            </div>
-            <Outlet/>
-        </div>
+                    <div className='sidebar-footer'>
+                        <span className='sidebar-item-label'>Logout</span>
+                        <img
+                            src='../src/assets/icons/logout.svg'
+                            alt='icon-logout'
+                            className='sidebar-item-icon' />
+                    </div>
+                </div>
+            </nav>
+        </nav>
     );
 }
 

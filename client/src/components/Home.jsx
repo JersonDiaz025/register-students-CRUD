@@ -1,13 +1,9 @@
 
 
 
-const Home = () => {
+const Home = ({data}) => {
 
-    return (
-        <div className="c">
-
-        </div>
-    )
+    return <div className="c"></div>;
 }
 
 

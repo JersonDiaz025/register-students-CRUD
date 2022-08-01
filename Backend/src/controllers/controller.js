@@ -11,11 +11,11 @@ controller.getHome = (req, res) => {
 controller.getAllInfoStudents = async (req, res) => {
     try {
         const data = await RegisterStudents.find();
-        res.json({response: "success", data});
+        res.json({ response: "success", data });
 
     } catch (err) {
         console.log(err);
-        res.json({response: 'Error internal server'})
+        res.json({ response: 'Error internal server' })
     }
 }
 
@@ -34,7 +34,7 @@ controller.postDataFormulary = async (req, res) => {
     });
     try {
         await students.save();
-        res.json({response: 'Successfully saved'})
+        res.json({ response: 'Successfully saved' })
     } catch (err) {
         console.log(err);
     }
@@ -44,16 +44,18 @@ controller.postDataFormulary = async (req, res) => {
 controller.updateInfoStudents = async (req, res) => {
     const { id } = req.params;
     const { calification, direction, email, name, phone_number, asignatura } = req.body;
-    // console.log(calification)
+    console.log(req.body)
     try {
 
-        await RegisterStudents.findByIdAndUpdate({_id: id}, {
-            calification: calification,
-            direction: direction,
-            email: email,
-            name: name,
-            phone_number: phone_number,
-            asignatura: asignatura,
+        await RegisterStudents.findByIdAndUpdate({ _id: id }, {
+            $set: {
+                calification: calification,
+                direction: direction,
+                email: email,
+                name: name,
+                phone_number: phone_number,
+                asignatura: asignatura,
+            }
         });
         res.json('dato actualizado')
     } catch (err) {
@@ -66,7 +68,7 @@ controller.updateInfoStudents = async (req, res) => {
 controller.deleteStudents = async (req, res) => {
     const id = req.params.id;
     try {
-        await RegisterStudents.findByIdAndDelete({_id: id})
+        await RegisterStudents.findByIdAndDelete({ _id: id })
         res.json(`usuario con el ${id} eliminado`)
     } catch (err) {
         console.log(err)

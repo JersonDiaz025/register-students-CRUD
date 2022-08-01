@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL = 'http://localhost:3004'
 
 // get data students
-const getInfoStudents = async() => {
+const getInfoStudents = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/all-students`)
         const { data } = response;
@@ -37,12 +37,23 @@ const postData = async (data) => {
     }
 }
 
-
 // Method PUT
-// const putData = async (_id) => {
-//     await axios.put('http://localhost:3004/:id', )
-// }
-
+const putData = async (dataUpdated) => {
+    const { id, name, calification, phone_number, email, direction, asignatura } = dataUpdated;
+    try {
+        const response = await axios.put(`${BASE_URL}/update-students/${id}`, {
+            calification,
+            direction,
+            email,
+            name,
+            phone_number,
+            asignatura,
+        });
+        return response
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 // method delete
 const deleteInfo = async (_id) => {
@@ -56,4 +67,4 @@ const deleteInfo = async (_id) => {
 }
 
 
-export {postData, deleteInfo, getInfoStudents}
+export { postData, deleteInfo, getInfoStudents, putData }

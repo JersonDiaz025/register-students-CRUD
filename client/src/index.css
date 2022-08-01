@@ -99,6 +99,7 @@ body{
     border-radius: 5px;
     font-size: 0.77rem;
     padding: 0.625rem;
+    /* text-transform: uppercase; */
 }
 
 .container-btn{

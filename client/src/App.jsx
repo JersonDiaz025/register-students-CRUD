@@ -6,6 +6,7 @@ import Form from "./components/Form";
 import Loader from "./components/Loader";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getData } from "./hooks/useGetData";
+import SidebarHeader from "./components/SidebarHeader";
 
 function App() {
   const { data, updateStudent } = getData();
@@ -20,7 +21,8 @@ function App() {
               <Route path="/" exact element={<Home data={data} />} />
               <Route
                 path="/students"
-                element={<Content data={data} updateStudent={updateStudent} />}
+                element={
+                  <SidebarHeader data={data} updateStudent={updateStudent} />}
               />
               <Route path="/contact" element={<Contact />} />
               <Route

@@ -20,6 +20,7 @@ body{
 
 /* content */
 .dashboard-body {
+    margin-top: 150px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -282,7 +283,7 @@ body{
 
 .container-table{
     width: 100%;
-    margin: 90px auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -300,7 +301,7 @@ th{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 95%;
+    width: 98%;
 
 }
 
@@ -366,7 +367,9 @@ tbody tr:hover{
     width: 20px;
     height: auto;
 }
-
+.hr{
+    width: 99%;
+}
 .count{
     color: #79807b;
     font-size: 2em;
@@ -474,9 +477,6 @@ tbody tr:hover{
     align-items: center;
 }
 
-.not-container{
-    display: none;
-}
 .container-popup{
     /* height: 100vh; */
     width: 100%;
@@ -493,7 +493,8 @@ tbody tr:hover{
     position: relative;
     width: 100%;
     max-width: 400px;
-    height: 30%;
+    height: 20%;
+    min-height: 100px;
     box-shadow: 1px 1px 15px rgba(7, 7, 7, 0.589);
     display: flex;
     justify-content: center;
@@ -680,12 +681,12 @@ label{
 /* --------title-table */
 
 .container-title{
-    width: 90%;
-    margin-left: auto;
-    text-align: left;
-    margin-right: auto;
+    margin: 0 auto;
+    width: 99%;
+    /* margin-left: auto; */
+    /* text-align: left; */
     /* background-color: #1fcc61; */
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     /* flex-direction: column; */
 }
 .title-all-students{

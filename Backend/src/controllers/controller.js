@@ -44,7 +44,6 @@ controller.postDataFormulary = async (req, res) => {
 controller.updateInfoStudents = async (req, res) => {
     const { id } = req.params;
     const { calification, direction, email, name, phone_number, asignatura } = req.body;
-    console.log(req.body)
     try {
 
         await RegisterStudents.findByIdAndUpdate({ _id: id }, {

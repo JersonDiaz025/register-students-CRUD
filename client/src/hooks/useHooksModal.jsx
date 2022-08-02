@@ -14,7 +14,6 @@ const managerHooks = (updateStudent) => {
   const handleCloseModal = (e) => {
     e.preventDefault();
     setOpenModal({ open: false });
-    console.log("cerrado");
   };
 
   // ------------------------------------sendDataModal------------------------------------------------------------------

@@ -40,10 +40,6 @@ const Content = ({ orders, updateStudent }) => {
       {ShowModal()}
       {ShowPopup()}
       <div className="container-table">
-        {/* <div className="container-title">
-
-          <hr className="hr"></hr>
-        </div> */}
         <div className="main">
           <table className="table">
             <thead className="thead-dark">
@@ -96,7 +92,7 @@ const Content = ({ orders, updateStudent }) => {
       </div>
     </div>
   ) : (
-    <div>There is no data</div>
+    <div style={{width:"100%", display:"flex", justifyContent:"center"}}><h2>There is no results</h2></div>
   );
 }
 

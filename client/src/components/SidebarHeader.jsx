@@ -1,36 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import Content from "./Content";
-// import { managerHooks } from "../hooks/useHooksModal";
-// import { findResult } from "../hooks/useFilter";
-
+import Header from "./Header";
+import { findResult } from "../hooks/useFilter";
 
 const SidebarHeader = ({ data, updateStudent }) => {
- 
-    // const { dataEdit, openModal, popup, handleUpdate, handleCloseModal,
-    // handleSendUpdate, handleAccept, handleDelete, setOpenPopup } = managerHooks(updateStudent);
-
-  const [filterData, setFilterdData] = useState("");
-  const [orders, setOrders] = useState(data?.data);
-
-  const _handleChange = (e) => {
-    const { target } = e;
-    const { value } = target;
-    setFilterdData(value);
-    if (value !== '') {
-      let dataFound = orders.filter(
-        (item) =>
-          item.name.toLowerCase().includes(filterData) ||
-          item.asignatura.toLowerCase().includes(filterData.toLowerCase())
-      );
-      setOrders(dataFound);
-    } else {
-       setOrders(data?.data);
-    }
-  }
+  const { filterData, orders, _handleChange } = findResult(data);
 
   return (
-    <>
+    <div>
+      <Header/>
       <div className="container-title">
         <div className="container-sidebar">
           <div className="container-btn-header">
@@ -41,7 +19,7 @@ const SidebarHeader = ({ data, updateStudent }) => {
           <div className="container_">
             <input
               placeholder="Search"
-              className="dashboard-content-input"
+              className="dashboard-input"
               value={filterData}
               onChange={(e) => _handleChange(e)}
             />
@@ -49,8 +27,8 @@ const SidebarHeader = ({ data, updateStudent }) => {
         </div>
         <hr className="hr"></hr>
       </div>
-        <Content updateStudent={updateStudent} orders={orders} />
-    </>
+      <Content updateStudent={updateStudent} orders={orders} />
+    </div>
   );
 };
 

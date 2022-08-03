@@ -1,33 +1,35 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 export const findResult = (data) => {
+  const [filterData, setFilterdData] = useState("");
 
-    const [filterData, setFilterdData] = useState('');
-    const [orders, setOrders] = useState(data?.data.data);
+  const [orders, setOrders] = useState();
 
+  useEffect(() => {
+    setOrders(data?.data);
+  }, [data])
 
-
-
-    const lowercase = filterData.toLowerCase()
-
-
-    const handleChange = (e) => {
-        const { target } = e;
-        const { value } = target;
-        setFilterdData(value);
-        if (value !== '') {
-            let dataFound = orders.filter(
-            (item) =>
-                item.name.toLowerCase().includes(filterData) || item.asignatura.toLowerCase().includes(filterData.toLowerCase()));
-            setOrders(dataFound);
-        }
+  const _handleChange = (e) => {
+    const { target } = e;
+    const { value } = target;
+    setFilterdData(value);
+    if (value !== "" && value.length > 2) {
+      let dataFound = orders.filter(
+        (item) =>
+          item.name.toLowerCase().includes(filterData) ||
+          item.asignatura.toLowerCase().includes(filterData.toLowerCase())
+      );
+      setOrders(dataFound);
+    } else {
+      setOrders(data?.data);
     }
+  };
 
-    return {
-        filterData,
-        orders,
-        handleChange,
-    };
-}
+  return {
+    filterData,
+    orders,
+    _handleChange,
+  };
+};
 
 

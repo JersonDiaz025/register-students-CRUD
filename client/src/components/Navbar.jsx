@@ -1,10 +1,11 @@
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 import Title from './Title';
+import Header from './Header';
 
 const Navbar = () => {
-    return (
-      <nav className="sidebar">
+  return (
+      <div className="sidebar">
         <nav className="sidebar-container">
           <div className="sidebar-logo-container">
             <Title
@@ -44,7 +45,7 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
-      </nav>
+      </div>
     );
 }
 

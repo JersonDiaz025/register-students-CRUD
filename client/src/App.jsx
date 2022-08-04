@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 import Home from "./components/Home";
 import Content from "./components/Content";
 import Contact from "./components/Contact";
@@ -14,7 +15,8 @@ function App() {
   return (
     <Router>
       <div className="dashboard-container">
-        <Navbar />
+          <Header />
+          <Navbar />
         <div className="dashboard-body">
           {data?.data ? (
             <Routes>
@@ -22,7 +24,8 @@ function App() {
               <Route
                 path="/students"
                 element={
-                  <SidebarHeader data={data} updateStudent={updateStudent} />}
+                  <SidebarHeader data={data} updateStudent={updateStudent} />
+                }
               />
               <Route path="/contact" element={<Contact />} />
               <Route

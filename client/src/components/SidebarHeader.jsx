@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Content from "./Content";
-import Header from "./Header";
 import { findResult } from "../hooks/useFilter";
 
 const SidebarHeader = ({ data, updateStudent }) => {
@@ -8,7 +7,6 @@ const SidebarHeader = ({ data, updateStudent }) => {
 
   return (
     <div>
-      <Header/>
       <div className="container-title">
         <div className="container-sidebar">
           <div className="container-btn-header">

@@ -1,5 +1,7 @@
 const RegisterStudents = require('../models/register-students');
+const UsersLogin = require('../models/users');
 const controller = {};
+// const passport = require('passport');
 
 
 // controller route home
@@ -39,6 +41,27 @@ controller.postDataFormulary = async (req, res) => {
         console.log(err);
     }
 }
+
+// send data login users
+// controller.posDatalogin = (passport.authenticate('local-sign', {
+//     successRedirect: '/',
+//     failureRedirect: '/login',
+//     passReqToCallback: true
+// }));
+    // const { email, password } = req.body;
+    // console.log(req.body)
+
+    // const dataUsers = new UsersLogin({
+    //     email, password
+    // });
+    // try {
+    //     // await dataUsers.save();
+    //     // res.json({ response: 'Successfully saved data login'})
+    // } catch (err) {
+    //     console.log(err)
+    // }
+
+
 
 // update info students
 controller.updateInfoStudents = async (req, res) => {

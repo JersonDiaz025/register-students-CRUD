@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import Navbar from './Navbar';
 
 const Header = ( props ) => {
@@ -14,8 +15,11 @@ const Header = ( props ) => {
             </button>
           </div>
           <div className="content-login">
-            <h3 className="title-login">Hola, Fulano</h3>
-            <img src="../src/assets/icons/icon-user.svg" />
+            <Link to="/login">
+              Login
+            </Link>
+            {/* <h3 className="title-login">Hola, Fulano</h3>
+            <img src="../src/assets/icons/icon-user.svg" /> */}
           </div>
         </div>
         {/* <Navbar/> */}

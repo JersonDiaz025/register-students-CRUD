@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getData } from "./hooks/useGetData";
 import SidebarHeader from "./components/SidebarHeader";
 import { ActionsMenu } from "./hooks/useActionsMenu";
+import Login from "./components/Login";
 
 function App() {
   const { data, updateStudent } = getData();
@@ -36,6 +37,7 @@ function App() {
               element={<Form updateStudent={updateStudent} />}
             />
             {/* <Route path="*" element={<NoPage />} /> */}
+            <Route path="/login" element={<Login/>} />
           </Routes>
         ) : (
           <Loader />

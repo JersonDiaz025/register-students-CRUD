@@ -37,6 +37,19 @@ const postData = async (data) => {
     }
 }
 
+const postDataLogin = async (dataLogin) => {
+    const { email, password } = dataLogin;
+    try {
+        const response = await axios.post(`${BASE_URL}/login`, {
+            email: email,
+            password: password
+        });
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 // Method PUT
 const putData = async (dataUpdated) => {
     const { id, name, calification, phone_number, email, direction, asignatura } = dataUpdated;
@@ -67,4 +80,4 @@ const deleteInfo = async (_id) => {
 }
 
 
-export { postData, deleteInfo, getInfoStudents, putData }
+export { postData, postDataLogin, deleteInfo, getInfoStudents, putData }

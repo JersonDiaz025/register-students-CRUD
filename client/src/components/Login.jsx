@@ -9,7 +9,7 @@ const Login = () => {
       <div className="main-container-login">
         <div className="container-login">
           <div className="header-login">
-            <Title data="Login" styles={`${"title-form-login"}`} />
+            <Title data="Register" styles={`${"title-form-login"}`} />
           </div>
           <form className="form-login" onSubmit={handleSubmit}>
             <div className="container-label-login">
@@ -43,7 +43,7 @@ const Login = () => {
               <p>
                 Dont have an account?{" "}
                 <a href="/register" className="link-reg">
-                  Register
+                  {/* Register */}
                 </a>
               </p>
             </div>

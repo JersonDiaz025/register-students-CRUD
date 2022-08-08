@@ -43,6 +43,9 @@ const Navbar = (props) => {
               Contact
             </Link>
             {/* <Link to="/login">Login</Link> */}
+            <Link to="/sign-Up" className="links">
+              Sign-Up
+            </Link>
           </div>
           <div className="sidebar-footer">
             <span className="sidebar-item-label">Logout</span>

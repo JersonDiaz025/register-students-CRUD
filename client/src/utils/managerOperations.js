@@ -40,7 +40,7 @@ const postData = async (data) => {
 const postDataLogin = async (dataLogin) => {
     const { email, password } = dataLogin;
     try {
-        const response = await axios.post(`${BASE_URL}/login`, {
+        const response = await axios.post(`${BASE_URL}/sign-Up`, {
             email: email,
             password: password
         });

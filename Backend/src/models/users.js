@@ -9,7 +9,6 @@ const UsersLogin = new mongoose.Schema(
 );
 
 // encrypt password
-
 UsersLogin.methods.encryptPassword = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 };
@@ -17,7 +16,6 @@ UsersLogin.methods.encryptPassword = (password) => {
 // compare password
 UsersLogin.methods.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.password);
-
 }
 
-module.exports = mongoose.model("LoginUsers", UsersLogin);
+module.exports = mongoose.model("auth-users", UsersLogin);

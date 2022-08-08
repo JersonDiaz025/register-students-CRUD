@@ -19,22 +19,28 @@ require('../auth/local-auth');
 
 app.use(express.json());
 app.use(cors());
-// use routes
-app.use(routes);
 
 // middlewars
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
-    secret: 'SECRET',
+    secret: 'dsjbhfsj vd',
     resave: false,
     saveUninitialized: false,
 }));
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// render message exist email user
+app.use((req, res, next) => {
+    app.locals.signUpMsg = req.flash('signUpMsg');
+    next();
+})
+// use routes
+app.use(routes);
 
 
 app.listen(port, () => {

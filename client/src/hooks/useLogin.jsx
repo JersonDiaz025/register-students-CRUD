@@ -1,21 +1,29 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+
 import { postDataLogin } from '../utils/managerOperations';
 
 export const managerDataLogin = () => {
+    const navigate = useNavigate()
 
     const [dataLogin, setDataLogin] = useState(
         {
             email: '',
             password: ''
         }
-    );
+        );
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (dataLogin.email !== '' && dataLogin.password !== '') {
             await postDataLogin(dataLogin)
-            // .then(data=>console.log(data))
+                .then(data => {
+                    data.data !== null
+                      ? navigate("/contact", { replace: true })
+                      : false;
+                })
             setDataLogin({ email: '', password: '' });
+            
         }
 
     }

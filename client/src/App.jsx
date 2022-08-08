@@ -37,7 +37,7 @@ function App() {
               element={<Form updateStudent={updateStudent} />}
             />
             {/* <Route path="*" element={<NoPage />} /> */}
-            <Route path="/login" element={<Login/>} />
+            <Route path="/sign-Up" element={<Login />} />
           </Routes>
         ) : (
           <Loader />

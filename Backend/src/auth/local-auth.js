@@ -1,3 +1,4 @@
+const res = require('express/lib/response');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const User = require('../models/users');
@@ -12,15 +13,25 @@ passport.deserializeUser(async (id, done) => {
     done(null, user)
 })
 
-passport.use('local-sign', new Strategy({
+passport.use('local-signUp', new Strategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
 
 }, async (req, email, password, done) => {
-    const user = new User();
-    user.email = email,
-    user.password = password;
-    await user.save();
-    done(null, user);
+
+    // verifi existent users in db
+    const verifyUserExistent = User.findOne({ email: email });
+
+    if (verifyUserExistent) {
+        return done(null, false, req.flash('signUpMsg', 'E-mail already exist'));
+    } else {
+
+        const newUser = new User();
+        newUser.email = email,
+        newUser.password = newUser.encryptPassword(password);
+        await newUser.save()
+        done(null, newUser)
+    }
+
 }));

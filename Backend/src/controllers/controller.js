@@ -42,25 +42,16 @@ controller.postDataFormulary = async (req, res) => {
     }
 }
 
+controller.getSignUp = async (req, res, next) => {
+    res.send('Register')
+}
+
 // send data login users
-// controller.posDatalogin = (passport.authenticate('local-sign', {
-//     successRedirect: '/',
-//     failureRedirect: '/login',
+// controller.posDatalogin = (passport.authenticate('local-signUp', {
+//     successRedirect: '/contact',
+//     failureRedirect: '/sign-Up',
 //     passReqToCallback: true
 // }));
-    // const { email, password } = req.body;
-    // console.log(req.body)
-
-    // const dataUsers = new UsersLogin({
-    //     email, password
-    // });
-    // try {
-    //     // await dataUsers.save();
-    //     // res.json({ response: 'Successfully saved data login'})
-    // } catch (err) {
-    //     console.log(err)
-    // }
-
 
 
 // update info students

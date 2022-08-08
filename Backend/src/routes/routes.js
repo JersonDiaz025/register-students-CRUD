@@ -1,7 +1,7 @@
 const express = require('express');
+const passport = require('passport');
 const router = express.Router();
 const controller = require('../controllers/controller');
-const passport = require('passport');
 
 
 // Home route
@@ -13,13 +13,17 @@ router.get('/all-students', controller.getAllInfoStudents);
 // post params from form
 router.post('/add-student-data', controller.postDataFormulary);
 
-// post params formulary login
-router.post('/login', passport.authenticate('local-sign', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    passReqToCallback: true
-}))
+// router.get('/sign-Up', controller.getSignUp)
 
+
+// post params formulary login
+// router.post('/sign-Up', controller.posDatalogin);
+router.post('/sign-Up', passport.authenticate('local-signUp', {
+    successRedirect: '/',
+    failureRedirect: '/sign-Up',
+    passReqToCallback: true
+
+}))
 // update info students
 router.put('/update-students/:id', controller.updateInfoStudents);
 

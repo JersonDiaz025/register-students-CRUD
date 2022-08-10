@@ -15,7 +15,7 @@ const Header = ( props ) => {
             </button>
           </div>
           <div className="content-login">
-            <Link to="/sign-Up" className='sign-btn'> Sign-Up</Link>
+            <Link to="/sign-up" className='sign-btn'> Sign-Up</Link>
             {/* <h3 className="title-login">Hola, Fulano</h3>
             <img src="../src/assets/icons/icon-user.svg" /> */}
           </div>

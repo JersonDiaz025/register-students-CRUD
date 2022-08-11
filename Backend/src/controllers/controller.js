@@ -1,6 +1,7 @@
 const RegisterStudents = require('../models/register-students');
 const passport = require('passport')
-const UsersRegister = require('../models/users');
+// const UsersRegister = require('../models/users');
+// const { signUp, signIn } = require('../auth/local-auth');
 const controller = {};
 
 // controller route home
@@ -46,12 +47,7 @@ controller.postDataFormulary = async (req, res) => {
 // }
 
 // send data login users
-controller.posDatalogin = (passport.authenticate('signUp', {
-    // successRedirect: '/contact',
-    /* Redirecting to the sign-up page if the user fails to login. */
-    // failureRedirect: '/sign-Up',
-    passReqToCallback: false
-}));
+// controller.register = (signUp);
 
 // controller.posDatalogin = async (req, res) => {
 //     const { email, password } = req.body;

@@ -14,7 +14,7 @@ const morgan = require('morgan');
 // Initialization
 const app = express();
 require('../database/connection-db');
-require('../auth/local-auth');
+require('../auth/auth');
 
 const port = process.env.PORT || 3008;
 

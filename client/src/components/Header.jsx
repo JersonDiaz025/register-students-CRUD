@@ -15,7 +15,12 @@ const Header = ( props ) => {
             </button>
           </div>
           <div className="content-login">
-            <Link to="/sign-up" className='sign-btn'> Sign-Up</Link>
+            <Link to="/signUp" className="sign-btn">
+              SignUp
+            </Link>
+            <Link to="/signIn" className="sign-btn">
+              SignIn
+            </Link>
             {/* <h3 className="title-login">Hola, Fulano</h3>
             <img src="../src/assets/icons/icon-user.svg" /> */}
           </div>

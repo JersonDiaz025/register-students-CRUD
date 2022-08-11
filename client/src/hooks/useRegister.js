@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { postDataRegister } from "../utils/managerOperations";
 
-export const managerDataLogin = () => {
+export const managerDataRegister = () => {
     const navigate = useNavigate()
 
     const [dataLogin, setDataLogin] = useState(
@@ -16,10 +16,12 @@ export const managerDataLogin = () => {
         e.preventDefault();
         if (dataLogin.email !== '' && dataLogin.password !== '') {
             await postDataRegister(dataLogin)
-            //   data?.data !== null
-            //     ? navigate("/contact", { replace: true })
-            //     : false;
-            // });
+                .then(data => {
+                    console.log(data);
+                    data?.data !== null
+                        ? navigate("/signIn", { replace: true })
+                        : false;
+                })
             setDataLogin({ email: '', password: '' });
 
         }

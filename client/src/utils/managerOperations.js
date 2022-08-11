@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:3000/'
+const BASE_URL = 'http://localhost:3000'
 
 // get data students
 const getInfoStudents = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}all-students`)
+        const response = await axios.get(`${BASE_URL}/all-students`)
         const { data } = response;
         if (data.response === 'success') {
             return response.data
@@ -21,7 +21,7 @@ const getInfoStudents = async () => {
 // Method POST
 const postData = async (data) => {
     try {
-        const response = await axios.post(`${BASE_URL}add-student-data`, {
+        const response = await axios.post(`${BASE_URL}/add-student-data`, {
 
             calification: parseInt(data.calification[0]),
             direction: data.direction[0],
@@ -36,15 +36,29 @@ const postData = async (data) => {
         console.log(err)
     }
 }
-
+// ---------------------------------------------------register and login---------------------------------------
 const postDataRegister = async (dataLogin) => {
     const { email, password } = dataLogin;
     try {
-        const response = await axios.post(`${BASE_URL}sign-up`, {
+        const response = await axios.post(`${BASE_URL}/signUp`, {
             email: email,
             password: password
         });
 
+        return response;
+    } catch (err) {
+        console.log(err);
+
+    }
+}
+
+const postDataLogin = async (loginData) => {
+    const { email, password } = loginData;
+    try {
+        const response = await axios.post(`${BASE_URL}/signIn`, {
+            email,
+            password
+        });
         return response;
     } catch (err) {
         console.log(err);
@@ -55,7 +69,7 @@ const postDataRegister = async (dataLogin) => {
 const putData = async (dataUpdated) => {
     const { id, name, calification, phone_number, email, direction, asignatura } = dataUpdated;
     try {
-        const response = await axios.put(`${BASE_URL}update-students/${id}`, {
+        const response = await axios.put(`${BASE_URL}/update-students/${id}`, {
             calification,
             direction,
             email,
@@ -72,7 +86,7 @@ const putData = async (dataUpdated) => {
 // method delete
 const deleteInfo = async (_id) => {
     try {
-        const response = await axios.delete(`${BASE_URL}delete-students/${_id}`)
+        const response = await axios.delete(`${BASE_URL}/delete-students/${_id}`)
         // .then(data=>console.log(data))
         return response
     } catch (err) {
@@ -81,4 +95,4 @@ const deleteInfo = async (_id) => {
 }
 
 
-export { postData, postDataRegister, deleteInfo, getInfoStudents, putData }
+export { postData, postDataRegister, postDataLogin, deleteInfo, getInfoStudents, putData }

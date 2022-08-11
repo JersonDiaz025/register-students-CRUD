@@ -1,14 +1,16 @@
 import React from 'react';
 import Title from './Title';
-import { managerDataLogin } from '../hooks/useLogin';
+import { managerDataRegister } from '../hooks/useRegister';
+import { FaUserAlt } from 'react-icons/fa';
 
-const Login = () => {
+const Register = () => {
 
-    const { dataLogin, handleSubmit, handleChange } = managerDataLogin();
+    const { dataLogin, handleSubmit, handleChange } = managerDataRegister();
     return (
       <div className="main-container-login">
         <div className="container-login">
           <div className="header-login">
+            <FaUserAlt className='icon-register'/>
             <Title data="Register" styles={`${"title-form-login"}`} />
           </div>
           <form className="form-login" onSubmit={handleSubmit}>
@@ -43,7 +45,7 @@ const Login = () => {
               <p>
                 Dont have an account?{" "}
                 <a href="/register" className="link-reg">
-                  {/* Register */}
+                  Register
                 </a>
               </p>
             </div>
@@ -53,4 +55,5 @@ const Login = () => {
     );
 }
 
-export default Login;
+
+export default Register;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 
 const UsersRegister = new Schema(
     {
@@ -10,15 +10,15 @@ const UsersRegister = new Schema(
 );
 
 // encrypt password
-UsersRegister.methods.encryptPassword = async (password) => {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
+UsersRegister.statics.encryptPassword = async (password) => {
+    const encryptPass = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, encryptPass);
+
 };
 
-
 // compare password
-UsersRegister.methods.validatePassword = async (password) => {
-    return await bcrypt.compare(password, this.password);
+UsersRegister.statics.comparePassword = async(newPassword, password) => {
+    return await bcrypt.compare(newPassword, password);
 }
 
 module.exports = mongoose.model("auth-users", UsersRegister);

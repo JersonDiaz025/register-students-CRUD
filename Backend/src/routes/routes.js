@@ -1,7 +1,8 @@
 const express = require('express');
-// const passport = require('passport');
 const router = express.Router();
 const controller = require('../controllers/controller');
+const verifyToken = require('../custom_middlewares/authJwt');
+const verifyDuplicateUsers = require('../custom_middlewares/checkSignUp');
 
 const { signIn, signUp } = require('../auth/auth')
 
@@ -12,20 +13,18 @@ router.get('/', controller.getHome);
 router.get('/all-students', controller.getAllInfoStudents);
 
 // post params from form
-router.post('/add-student-data', controller.postDataFormulary);
-
-// router.post('/sign-up', controller.posDatalogin);
+router.post('/add-student-data', verifyToken, controller.postDataFormulary);
 
 // post params formulary register
-router.post('/signUp', signUp);
+router.post('/signUp', verifyDuplicateUsers, signUp);
 
 // post params formulary login
 router.post('/signIn', signIn);
 
 // update info students
-router.put('/update-students/:id', controller.updateInfoStudents);
+router.put('/update-students/:id', verifyToken, controller.updateInfoStudents);
 
 //route for delete info students
-router.delete('/delete-students/:id', controller.deleteStudents);
+router.delete('/delete-students/:id', verifyToken, controller.deleteStudents);
 
 module.exports = router;

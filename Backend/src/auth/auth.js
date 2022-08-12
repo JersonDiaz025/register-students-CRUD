@@ -5,46 +5,52 @@ const config = require('../../config')
 // register
 const signUp = async (req, res) => {
     const { email, password } = req.body;
+    try {
 
-    const newUser = new User({
-        email,
-        password: await User.encryptPassword(password)
-    });
+        const newUser = new User({
+            email,
+            password: await User.encryptPassword(password)
+        });
 
-    // save dates
-    const savedUser = await newUser.save();
-    // res.json('Successfully registered user')
+        // save dates
+        const savedUser = await newUser.save();
 
-    // token
-    const tokenUser = jwt.sign({ id: savedUser._id }, config.SECRET, {
-        expiresIn: 86400 // 1 day
-    })
+        // token
+        const tokenUser = jwt.sign({ id: savedUser._id }, config.SECRET, {
+            expiresIn: 86400 // 1 day
+        })
+        res.status(200).json({ data: 'Successfully registered user', token: tokenUser });
 
-    res.status(200).json({ data: 'Successfully registered user', token: tokenUser });
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 // signin
 const signIn = async (req, res) => {
     const { email, password } = req.body;
 
-    // verifi posible exist users
-    const verifyUserExistent = await User.findOne({ email: email });
+    try {
 
-    if (!verifyUserExistent) return res.status(400).json({response: 'User no found'})
+        // verifi posible exist users
+        const verifyUserExistent = await User.findOne({ email: email });
 
-    res.json({ token: '' })
+        if (!verifyUserExistent) return res.status(400).json({ response: 'User no found' });
 
-    // verify similar password
-    const verifyPass = await User.comparePassword(password, verifyUserExistent.password);
+        const verifyPass = await User.comparePassword(password, verifyUserExistent.password);
 
-    if (!verifyPass) {
-        return res.status(401).json({response: 'invalid passwod'})
-    } else {
-        const to = jwt.sign({ id: verifyUserExistent._id }, config.SECRET, {
-            expiresIn: 86400
-        })
-        res.status(200).json({to})
+        if (!verifyPass) {
+            return res.status(401).json({ response: 'Invalid passwod' });
+
+        } else {
+            const token = jwt.sign({ id: verifyUserExistent._id }, config.SECRET, { expiresIn: 86400 });
+            return res.status(200).json({ response: 'Welcome', token });
+        }
+
+    } catch (error) {
+        console.log(error)
     }
+
 
 }
 

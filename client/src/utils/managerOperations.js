@@ -20,16 +20,22 @@ const getInfoStudents = async () => {
 
 // Method POST
 const postData = async (data) => {
-    try {
-        const response = await axios.post(`${BASE_URL}/add-student-data`, {
 
-            calification: parseInt(data.calification[0]),
-            direction: data.direction[0],
-            email: data.email[0],
-            name: data.name[0],
-            phone_number: data.phone_number[0],
-            asignatura: data.asignatura[0],
-        });
+    const params = {
+        calification: parseInt(data.calification[0]),
+        direction: data.direction[0],
+        email: data.email[0],
+        name: data.name[0],
+        phone_number: data.phone_number[0],
+        asignatura: data.asignatura[0],
+    }
+    try {
+        const response = await axios.post(`${BASE_URL}/add-student-data`, params, {
+            headers: {
+                "Content-Type": "application/json",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjY2Yzk3ZTFjMTA0ODFjOTVhZGExZiIsImlhdCI6MTY2MDMxNjgyNCwiZXhwIjoxNjYwNDAzMjI0fQ.FsFN2XUgoWaEq9bMxRVJoGxg1qDhhzrwK1Mu6zHgxdw"
+            }
+        })
         return response
 
     } catch (err) {
@@ -68,14 +74,13 @@ const postDataLogin = async (loginData) => {
 // Method PUT
 const putData = async (dataUpdated) => {
     const { id, name, calification, phone_number, email, direction, asignatura } = dataUpdated;
+    const params = { calification, direction, email, name,phone_number, asignatura }
     try {
-        const response = await axios.put(`${BASE_URL}/update-students/${id}`, {
-            calification,
-            direction,
-            email,
-            name,
-            phone_number,
-            asignatura,
+        const response = await axios.put(`${BASE_URL}/update-students/${id}`,params,{
+            headers: {
+                "Content-Type": "application/json",
+                "x-access-token": 'update token'
+            }
         });
         return response
     } catch (err) {
@@ -86,8 +91,13 @@ const putData = async (dataUpdated) => {
 // method delete
 const deleteInfo = async (_id) => {
     try {
-        const response = await axios.delete(`${BASE_URL}/delete-students/${_id}`)
-        // .then(data=>console.log(data))
+        const response = await axios.delete(`${BASE_URL}/delete-students/${_id}`, {
+            headers: {
+                "Content-Type": "application/json",
+                "x-access-token": 'delete token'
+            }
+        })
+
         return response
     } catch (err) {
         console.log(err)

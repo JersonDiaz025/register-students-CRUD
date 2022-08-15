@@ -1,32 +1,38 @@
 import { useState, useEffect } from 'react';
-import { postData, deleteInfo, putData } from '../utils/managerOperations';
+// import { postData, deleteInfo, putData } from '../utils/managerOperations';
 
 export const serviceUser = () => {
 
+
     const [user, setUser] = useState();
-    const [logged, setLogged] = useState(false);
+    const [isLoggedIn, setisLoggedIn] = useState(null);
 
-    const sendToken = async(token) => {
-        // await postData(token),
-        // await deleteInfo(token),
-        // await putData(token)
-    }
-
-
-    useEffect(() => {
-        const loggedUser = window.localStorage.getItem('loggedUser');
+    // added user at localStorage
+    const getUserToken = () => {
+        const loggedUser = window.localStorage.getItem("loggedUser");
         if (loggedUser) {
             const getUser = JSON.parse(loggedUser);
             setUser(getUser);
-            sendToken(user?.token)
-            setLogged(true);
+            setisLoggedIn(true);
         }
+    }
+
+    const handlelogOut = () => {
+        setisLoggedIn(false)
+        setUser(null)
+        window.localStorage.removeItem("loggedUser")
+    }
+
+    useEffect(() => {
+        getUserToken()
     }, []);
 
 
     return {
         user,
-        logged
+        isLoggedIn,
+        handlelogOut,
+        getUserToken
     }
 }
 

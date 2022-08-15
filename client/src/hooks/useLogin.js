@@ -3,31 +3,34 @@ import { useNavigate } from 'react-router';
 import { postDataLogin } from '../utils/managerOperations';
 import { setLocalStorage } from '../utils/generateLocalStorage';
 
-export const managerLogin = () => {
+export const managerLogin = (getUserToken) => {
 
     const navigate = useNavigate();
 
     const [msg, setMsg] = useState(null);
-    // console.log(msg)
 
     const [loginData, setLogin] = useState({
         email: '',
         password: ''
     });
 
-    const handleSubmit = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         try {
             if (loginData.email !== '' && loginData.password !== '') {
                 await postDataLogin(loginData)
                 const { data } = await postDataLogin(loginData)
-                setLocalStorage(data.user);
+                console.log(data)
+                setMsg(data)
+                data?.response === 'Welcome' ?
+                    (setMsg(data),
+                    setLocalStorage(data.user),
+                        navigate('/', { replace: true }),
+                        getUserToken())
+                    :false
                 setTimeout(() => {
                     setMsg(null)
-                    data?.response === 'Welcome' ?
-                        navigate("/", { replace: true })
-                    :false
-                }, 2000)
+                }, 3000)
                 setLogin({ email: '', password: '' });
             }
 
@@ -46,7 +49,7 @@ export const managerLogin = () => {
 
     return {
         login: loginData,
-        handleSubmit,
+        handleLogin,
         handleChange,
         msg
     }

@@ -2,25 +2,26 @@ import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 import Title from './Title';
 import Header from './Header';
+import { AiFillHome } from "react-icons/ai";
+import { HiUserGroup } from "react-icons/hi";
+import { GiArchiveRegister } from "react-icons/gi";
+import { BsInfoCircle } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
 
 const Navbar = (props) => {
-  const { handleActionsMenu } = props;
+  const { handleActionsMenu, handlelogOut } = props;
 
   return (
     <div className="sidebar">
       <nav className="sidebar-container">
         <div className="container-close-nav">
-          <img
-            onClick={handleActionsMenu}
-            src="../src/assets/icons/logout.svg"
-            alt="icon-logout"
-            className="sidebar-item-icon-close"
-          />
+          <IoClose className="icon-close" onClick={handleActionsMenu} />
         </div>
 
         <div className="sidebar-logo-container">
           <Title data={"Student Registration"} stylesTitle={`${"title-nav"}`} />
-          {/* <hr /> */}
           <img
             src="../src/assets/students-icon.png"
             alt="image-home"
@@ -30,30 +31,31 @@ const Navbar = (props) => {
         <div className="sidebar-container">
           <div className="sidebar-items">
             <Link to="/" className="links">
-              {/* <img src='../src/assets/icons/home.svg'/> */}
+              <AiFillHome className="icons-nav" />
               <span>Home</span>
             </Link>
             <Link to="/students" className="links">
+              <HiUserGroup className="icons-nav" />
               <span>All students</span>
             </Link>
             <Link to="/register" className="links">
-              Register student
+              <GiArchiveRegister className="icons-nav" />
+              Add student
             </Link>
-            <Link to="/contact" className="links">
-              Contact
+            <Link to="/about" className="links">
+              <BsInfoCircle className="icons-nav" />
+              About
             </Link>
             {/* <Link to="/login">Login</Link> */}
-            <Link to="/sign-Up" className="links">
+            <Link to="/signUp" className="links">
+              <FaRegUser className="icons-nav" />
               Sign-Up
             </Link>
           </div>
           <div className="sidebar-footer">
-            <span className="sidebar-item-label">Logout</span>
-            <img
-              src="../src/assets/icons/logout.svg"
-              alt="icon-logout"
-              className="sidebar-item-icon"
-            />
+            {/* <span className="sidebar-item-label">Logout</span> */}
+            <p className="links">Log-Out</p>
+            <FiLogOut className="icon-logOut" onClick={handlelogOut} />
           </div>
         </div>
       </nav>

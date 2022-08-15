@@ -1,37 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ImUsers } from "react-icons/im";
+import { AiOutlineMenu } from "react-icons/ai"
 
 const Header = ( props ) => {
 
-  const { handleActionsMenu, user, logged } = props;
-  console.log(user)
+  const { handleActionsMenu, user, isLoggedIn } = props;
+
     return (
       <div className="container-nav-header">
         <div className="content">
           <div className="container-action">
-            <button className="btn-close-header" onClick={handleActionsMenu}>
-              <img src="../src/assets/icons/icon-close.svg" />
-            </button>
+            <AiOutlineMenu
+              className="btn-close-header"
+              onClick={handleActionsMenu}
+            />
           </div>
           <div className="content-login">
-            {!logged ? (
+            {!isLoggedIn ? (
               <>
-                <Link to="/signUp" className="sign-btn">
+                {/* <Link to="/signUp" className="sign-btn">
                   SignUp
-                </Link>
+                </Link> */}
                 <Link to="/signIn" className="sign-btn">
                   SignIn
                 </Link>
               </>
             ) : (
-              <>
-                  <h3 className="title-login">Hi, {`${user.username}`}</h3>
-                  <img src="../src/assets/icons/icon-user.svg" />
-              </>
+              <div className="container-profile-info">
+                <em className="title-login">
+                  <span>Hi,</span> {`${user?.username}`}
+                </em>
+                <ImUsers className="icon-user" />
+              </div>
             )}
           </div>
         </div>
-        {/* <Navbar/> */}
       </div>
     );
 }

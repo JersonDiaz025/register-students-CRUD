@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 import { managerLogin } from "../hooks/useLogin";
 import { AiOutlineUser } from "react-icons/ai";
 
-const Login = () => {
-  const { login, msg, handleSubmit, handleChange } = managerLogin();
+const Login = (props) => {
+    const { getUserToken } = props;
+    const { login, msg, handleLogin, handleChange } = managerLogin(getUserToken);
+    console.log(msg);
 
   return (
     <>
-      {msg && (
+      {msg?.response && (
         <Notification
           msg={msg}
-          styles_text={!msg.value ?"msg-error": "msg-success"}
-          styles_icon={!msg.value ?"icon-error": "icon-success"}
+          styles_text={!msg.value ? "msg-error" : "msg-success"}
+          styles_icon={!msg.value ? "icon-error" : "icon-success"}
         />
       )}
       <div className="main-container-login">
@@ -22,7 +24,7 @@ const Login = () => {
             <AiOutlineUser className="icon-login" />
             <Title data="Log In" styles={`${"title-form-login"}`} />
           </div>
-          <form className="form-login" onSubmit={handleSubmit}>
+          <form className="form-login" onSubmit={handleLogin}>
             <div className="container-label-login">
               <label className="label-login">Email address</label>
               <input

@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 
 
+const Home = (props) => {
 
-const Home = ({data}) => {
+    // const { getUserToken } = props;
+
+    // useEffect(() => {
+    //     getUserToken()
+    // },[])
+
 
     return <div className="c"> hola</div>;
 }

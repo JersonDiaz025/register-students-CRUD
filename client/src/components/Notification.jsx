@@ -3,7 +3,8 @@ import { BiError } from 'react-icons/bi';
 import { VscPassFilled } from 'react-icons/vsc';
 
 const Notification = (props) => {
-    const { styles_text, styles_icon, msg } = props;
+  const { styles_text, styles_icon, msg } = props;
+  console.log(msg);
     return (
       <div className="container-header-notification">
         <div className="container-notifi">

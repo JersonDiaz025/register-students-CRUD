@@ -11,50 +11,36 @@ import SidebarHeader from "./components/SidebarHeader";
 import { ActionsMenu } from "./hooks/useActionsMenu";
 import Register from "./components/Register";
 import Login from "./components/SignIn";
-// import { serviceUser } from "./hooks/useUser";
+import { serviceUser } from "./hooks/useUser";
+import FatherComponent from "./components/FatherComponent";
 
 function App() {
+
   const { data, updateStudent } = getData();
 
   const { open, handleActionsMenu } = ActionsMenu();
 
-  // const { user, logged } = serviceUser();
-
-  const [user, setUser] = useState(null);
-  const [logged, setLogged] = useState(false);
-  // console.log(user)
-  // console.log(logged);
-
-  const getUserJSON = () => {
-
-    const loggedUser = window.localStorage.getItem("loggedUser");
-    if (loggedUser) {
-      const getUser = JSON.parse(loggedUser);
-      setUser(getUser);
-      setLogged(true);
-    }
-  }
-
-
-  useEffect(() => {
-    getUserJSON()
-  }, []);
-
+  const { user, isLoggedIn, handlelogOut, getUserToken } = serviceUser();
 
   return (
     <Router>
-      {logged ? (
+      {isLoggedIn ? (
         <div className="dashboard-container">
           <Header
             handleActionsMenu={handleActionsMenu}
             user={user}
-            logged={logged}
+            isLoggedIn={isLoggedIn}
           />
-          {open && <Navbar handleActionsMenu={handleActionsMenu} />}
-          <>
+          <div>
+            {open && (
+              <Navbar
+                handleActionsMenu={handleActionsMenu}
+                handlelogOut={handlelogOut}
+              />
+            )}
             {data?.data ? (
               <Routes>
-                <Route path="/" element={<Home data={data} />} />
+                <Route exact path="/" element={<Home data={data} />} />
                 <Route
                   path="/students"
                   element={
@@ -68,20 +54,18 @@ function App() {
                 />
                 {/* <Route path="*" element={<NoPage />} /> */}
                 <Route path="/signUp" element={<Register />} />
-                <Route path="/signIn" element={<Login />} />
+                <Route
+                  path="/signIn"
+                  element={<Login getUserToken={getUserToken} />}
+                />
               </Routes>
             ) : (
               <Loader />
             )}
-          </>
+          </div>
         </div>
       ) : (
-          <>
-              <Routes>
-                <Route path="/signUp" element={<Register />} />
-                <Route path="/signIn" element={<Login />} />
-              </Routes>
-          </>
+        <FatherComponent getUserToken={getUserToken}/>
       )}
     </Router>
   );

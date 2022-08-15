@@ -1,11 +1,15 @@
 const User = require('../models/users');
 
 const verifyDuplicateUsers = async(req, res, next) => {
-    const { email } = req.body;
+    const { email, username } = req.body;
 
     const emailUser = await User.findOne({ email: email });
 
-    if (emailUser) return res.status(400).json({ message: "User aready exist" });
+    if (emailUser) return res.status(400).json({value: false, response: "The email aready exist" });
+
+    const usernameUser = await User.findOne({ username: username });
+
+    if (usernameUser) return res.status(400).json({value: false, response: "The user aready exist" });
     next();
 }
 

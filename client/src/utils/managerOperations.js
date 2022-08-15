@@ -22,18 +22,18 @@ const getInfoStudents = async () => {
 const postData = async (data) => {
 
     const params = {
-        calification: parseInt(data.calification[0]),
-        direction: data.direction[0],
-        email: data.email[0],
-        name: data.name[0],
-        phone_number: data.phone_number[0],
-        asignatura: data.asignatura[0],
+        calification: parseInt(data?.calification[0]),
+        direction: data?.direction[0],
+        email: data?.email[0],
+        name: data?.name[0],
+        phone_number: data?.phone_number[0],
+        asignatura: data?.asignatura[0],
     }
     try {
         const response = await axios.post(`${BASE_URL}/add-student-data`, params, {
             headers: {
                 "Content-Type": "application/json",
-                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjY2Yzk3ZTFjMTA0ODFjOTVhZGExZiIsImlhdCI6MTY2MDMxNjgyNCwiZXhwIjoxNjYwNDAzMjI0fQ.FsFN2XUgoWaEq9bMxRVJoGxg1qDhhzrwK1Mu6zHgxdw"
+                "x-access-token": ""
             }
         })
         return response
@@ -44,16 +44,18 @@ const postData = async (data) => {
 }
 // ---------------------------------------------------register and login---------------------------------------
 const postDataRegister = async (dataLogin) => {
-    const { email, password } = dataLogin;
+    const { email, password, username } = dataLogin;
     try {
         const response = await axios.post(`${BASE_URL}/signUp`, {
+            username,
             email: email,
             password: password
         });
 
         return response;
     } catch (err) {
-        console.log(err);
+        const { response } = err;
+        return response
 
     }
 }
@@ -67,7 +69,8 @@ const postDataLogin = async (loginData) => {
         });
         return response;
     } catch (err) {
-        console.log(err);
+        const { response } = err;
+        return response
     }
 }
 
@@ -89,7 +92,7 @@ const putData = async (dataUpdated) => {
 }
 
 // method delete
-const deleteInfo = async (_id) => {
+const deleteInfo = async (_id, token) => {
     try {
         const response = await axios.delete(`${BASE_URL}/delete-students/${_id}`, {
             headers: {

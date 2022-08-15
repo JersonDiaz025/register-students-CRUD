@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { postData } from "../utils/managerOperations";
+import { managerLogin } from "./useLogin";
 
 export const managerDataForm = (updateStudent) => {
+
+  const { msg } = managerLogin();
+  console.log(msg)
+
+
   const [data, setData] = useState({
     name: [],
     calification: [],

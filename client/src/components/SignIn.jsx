@@ -1,11 +1,21 @@
-import Title from './Title';
-import { managerLogin } from '../hooks/useLogin';
+import Title from "./Title";
+import Notification from "./Notification";
+import { Link } from "react-router-dom";
+import { managerLogin } from "../hooks/useLogin";
 import { AiOutlineUser } from "react-icons/ai";
 
 const Login = () => {
+  const { login, msg, handleSubmit, handleChange } = managerLogin();
 
-    const { login, handleSubmit, handleChange } = managerLogin();
-    return (
+  return (
+    <>
+      {msg && (
+        <Notification
+          msg={msg}
+          styles_text={!msg.value ?"msg-error": "msg-success"}
+          styles_icon={!msg.value ?"icon-error": "icon-success"}
+        />
+      )}
       <div className="main-container-login">
         <div className="container-login">
           <div className="header-login">
@@ -31,7 +41,7 @@ const Login = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Password"
+                placeholder="Enter password"
                 onChange={(ev) => handleChange(ev)}
                 value={login.password}
                 // required
@@ -42,15 +52,16 @@ const Login = () => {
                 Submit
               </button>
               <p>
-                Dont have an account?{" "}
-                <a href="/register" className="link-reg">
+                Dont have an account?
+                <Link to="/signUp" className="link-reg">
                   Register
-                </a>
+                </Link>
               </p>
             </div>
           </form>
         </div>
       </div>
-    );
-}
+    </>
+  );
+};
 export default Login;

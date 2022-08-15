@@ -1,13 +1,15 @@
 const User = require('../models/users');
 const jwt = require('jsonwebtoken');
-const config = require('../../config')
+const config = require('../../config');
+const { serialize } = require('cookie');
 
 // register
 const signUp = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, username } = req.body;
     try {
 
         const newUser = new User({
+            username,
             email,
             password: await User.encryptPassword(password)
         });
@@ -19,7 +21,7 @@ const signUp = async (req, res) => {
         const tokenUser = jwt.sign({ id: savedUser._id }, config.SECRET, {
             expiresIn: 86400 // 1 day
         })
-        res.status(200).json({ data: 'Successfully registered user', token: tokenUser });
+        res.status(200).json({value: true, response: 'Successfully registered', token: tokenUser });
 
     } catch (error) {
         console.log(error)
@@ -35,17 +37,32 @@ const signIn = async (req, res) => {
         // verifi posible exist users
         const verifyUserExistent = await User.findOne({ email: email });
 
-        if (!verifyUserExistent) return res.status(400).json({ response: 'User no found' });
+        if (!verifyUserExistent) return res.status(400).json({ value: false, response: 'User not found' });
 
         const verifyPass = await User.comparePassword(password, verifyUserExistent.password);
 
         if (!verifyPass) {
-            return res.status(401).json({ response: 'Invalid passwod' });
+            return res.status(401).json({value: false, response: 'Invalid passwod' });
 
         } else {
             const token = jwt.sign({ id: verifyUserExistent._id }, config.SECRET, { expiresIn: 86400 });
-            return res.status(200).json({ response: 'Welcome', token });
+            return res.status(200).json({ value: true, response: 'Welcome', user: { username: verifyUserExistent.username, token } });
+            // res.setHeader('Set-Cookie', token)
+
+            // serialized
+            // const serialized = serialize('tokenUser', token, {
+            //     httpOnly: true,
+            //     secure: process.env.NODE_ENV === 'production',
+            //     sameSite: 'strict',
+            //     maxAge: 1000 * 64 * 60 * 24 * 30, 
+            //     path: '/'
+            // });
+            // // console.log(serialized)
+            // res.setHeader('Set-Cookie', serialized);
+            // // console.log(res.setHeader('Set-Cookie', serialized))
+            // return res.status(200).json({ value: true, response: 'Welcome'});
         }
+
 
     } catch (error) {
         console.log(error)

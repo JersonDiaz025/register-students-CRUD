@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import Navbar from './Navbar';
 
 const Header = ( props ) => {
 
-    const { handleActionsMenu } = props;
-
+  const { handleActionsMenu, user, logged } = props;
+  console.log(user)
     return (
       <div className="container-nav-header">
         <div className="content">
@@ -15,14 +14,21 @@ const Header = ( props ) => {
             </button>
           </div>
           <div className="content-login">
-            <Link to="/signUp" className="sign-btn">
-              SignUp
-            </Link>
-            <Link to="/signIn" className="sign-btn">
-              SignIn
-            </Link>
-            {/* <h3 className="title-login">Hola, Fulano</h3>
-            <img src="../src/assets/icons/icon-user.svg" /> */}
+            {!logged ? (
+              <>
+                <Link to="/signUp" className="sign-btn">
+                  SignUp
+                </Link>
+                <Link to="/signIn" className="sign-btn">
+                  SignIn
+                </Link>
+              </>
+            ) : (
+              <>
+                  <h3 className="title-login">Hi, {`${user.username}`}</h3>
+                  <img src="../src/assets/icons/icon-user.svg" />
+              </>
+            )}
           </div>
         </div>
         {/* <Navbar/> */}

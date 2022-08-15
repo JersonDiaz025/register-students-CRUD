@@ -1,19 +1,40 @@
 import React from 'react';
 import Title from './Title';
+import Notification from './Notification';
+import { Link } from 'react-router-dom';
 import { managerDataRegister } from '../hooks/useRegister';
 import { FaUserAlt } from 'react-icons/fa';
 
 const Register = () => {
-
-    const { dataLogin, handleSubmit, handleChange } = managerDataRegister();
-    return (
+    const { dataLogin, msgRegister, handleSubmit, handleChange } = managerDataRegister();
+  return (
+    <>
+      {msgRegister && (
+        <Notification
+          msg={msgRegister}
+          styles_text={!msgRegister.value? "msg-error": "msg-success"}
+          styles_icon={!msgRegister.value? "icon-error": "icon-success"}
+        />
+      )}
       <div className="main-container-login">
         <div className="container-login">
           <div className="header-login">
-            <FaUserAlt className='icon-register'/>
+            <FaUserAlt className="icon-register" />
             <Title data="Register" styles={`${"title-form-login"}`} />
           </div>
           <form className="form-login" onSubmit={handleSubmit}>
+            <div className="container-label-login">
+              <label className="label-login">Username</label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Enter username"
+                onChange={(ev) => handleChange(ev)}
+                value={dataLogin.username}
+                // required
+              />
+            </div>
             <div className="container-label-login">
               <label className="label-login">Email address</label>
               <input
@@ -32,7 +53,7 @@ const Register = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Password"
+                placeholder="Enter password"
                 onChange={(ev) => handleChange(ev)}
                 value={dataLogin.password}
                 // required
@@ -43,16 +64,17 @@ const Register = () => {
                 Submit
               </button>
               <p>
-                Dont have an account?{" "}
-                <a href="/register" className="link-reg">
-                  Register
-                </a>
+                You have an account?
+                <Link to="/signIn" className="link-reg">
+                  Login
+                </Link>
               </p>
             </div>
           </form>
         </div>
       </div>
-    );
+    </>
+  );
 }
 
 

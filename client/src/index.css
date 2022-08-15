@@ -801,7 +801,7 @@ label{
     justify-content: center;
     align-items: center;
     width: 100% ;
-    height: 500px;
+    height: 550px;
 }
 .sign-btn{
     padding: 20px;
@@ -849,7 +849,7 @@ label{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     margin-top: 20px;
 
 }
@@ -859,7 +859,7 @@ label{
     font-weight: bold;
 }
 
-#email, #password {
+#username, #email, #password {
     font-style: inherit;
     font-family: inherit;
     border: 0.5px solid #2523237c;
@@ -877,7 +877,8 @@ label{
 .link-reg{
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    /* font-weight: bold; */
+    margin-left: 5px;
 }
 #email:hover{
     box-shadow: 3px 2px 8px 8px#8cb3e094;
@@ -920,3 +921,54 @@ label{
     background-color: #015C92;
 }
 
+/* --------------------------------------------notification--------------------------------------- */
+.container-header-notification{
+    width: 100%;
+    top: 10px;
+    backdrop-filter: blur(0.6px);
+    position: absolute;
+    transition: all 2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-notifi{
+    width: 50%;
+    height: 12vh;
+    max-width: 300px;
+    background-color: #E9EBED;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+}
+.msg-error{
+    color: red;
+    font-size: 18px;
+    text-decoration:underline;
+    font-weight: bold;
+}
+
+.msg-success{
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    /* text-decoration:underline; */
+}
+
+.icon-success{
+    width: 40px;
+    height: 30px;
+    color: green;
+}
+
+.icon-error{
+    width: 40px;
+    height: 30px;
+    color: red
+}
+/* .icon-success-color{
+    width: 40px;
+    height: 30px;
+    color: green
+} */

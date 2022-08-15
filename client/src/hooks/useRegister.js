@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router';
 import { postDataRegister } from "../utils/managerOperations";
 
 export const managerDataRegister = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const [msgRegister, setMsgRegister] = useState(null);
+
 
     const [dataLogin, setDataLogin] = useState(
         {
+            username: '',
             email: '',
             password: ''
         }
@@ -14,18 +18,18 @@ export const managerDataRegister = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (dataLogin.email !== '' && dataLogin.password !== '') {
-            await postDataRegister(dataLogin)
-                .then(data => {
-                    console.log(data);
-                    data?.data !== null
-                        ? navigate("/signIn", { replace: true })
-                        : false;
-                })
-            setDataLogin({ email: '', password: '' });
-
-        }
-
+        await postDataRegister(dataLogin)
+            .then(res => {
+                const { data } = res;
+                setMsgRegister(data)
+                setTimeout(() => {
+                    setMsgRegister(null)
+                    data?.response === 'Successfully registered'
+                    ? navigate("/signIn", { replace: true })
+                    : false;
+                }, 3000)
+            })
+        setDataLogin({ username: '', email: '', password: '' });
     }
 
     const handleChange = (ev) => {
@@ -37,6 +41,7 @@ export const managerDataRegister = () => {
 
     return {
         dataLogin,
+        msgRegister,
         handleSubmit,
         handleChange
     };

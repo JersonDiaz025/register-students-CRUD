@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 
 export const serviceUser = () => {
 
-
     const [user, setUser] = useState();
     const [isLoggedIn, setisLoggedIn] = useState(null);
 

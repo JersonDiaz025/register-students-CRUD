@@ -7,7 +7,6 @@ import { AiOutlineUser } from "react-icons/ai";
 const Login = (props) => {
     const { getUserToken } = props;
     const { login, msg, handleLogin, handleChange } = managerLogin(getUserToken);
-    console.log(msg);
 
   return (
     <>

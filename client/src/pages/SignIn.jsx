@@ -1,12 +1,12 @@
-import Title from "./Title";
-import Notification from "./Notification";
+import Title from "../components/Title";
+import Notification from "../components/Notification";
 import { Link } from "react-router-dom";
 import { managerLogin } from "../hooks/useLogin";
 import { AiOutlineUser } from "react-icons/ai";
 
 const Login = (props) => {
-    const { getUserToken } = props;
-    const { login, msg, handleLogin, handleChange } = managerLogin(getUserToken);
+  const { dispatch } = props;
+  const { login, msg, handleLogin, handleChange } = managerLogin(dispatch);
 
   return (
     <>
@@ -49,7 +49,10 @@ const Login = (props) => {
               />
             </div>
             <div className="container-btn-login">
-              <button type="submit" className="btn-login-send">
+              <button
+               type="submit"
+                className="btn-login-send"
+              >
                 Submit
               </button>
               <p>

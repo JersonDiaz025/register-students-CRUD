@@ -18,18 +18,24 @@ export const managerDataRegister = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await postDataRegister(dataLogin)
-            .then(res => {
-                const { data } = res;
-                setMsgRegister(data)
-                setTimeout(() => {
-                    setMsgRegister(null)
-                    data?.response === 'Successfully registered'
-                    ? navigate("/signIn", { replace: true })
-                    : false;
-                }, 3000)
-            })
-        setDataLogin({ username: '', email: '', password: '' });
+        try {
+            if (dataLogin.username !== '' && dataLogin.email !== '' && dataLogin.password !== '') {
+                await postDataRegister(dataLogin)
+                    .then(res => {
+                        const { data } = res;
+                        setMsgRegister(data)
+                        setTimeout(() => {
+                            setMsgRegister(null)
+                            data?.response === 'Successfully registered'
+                            ? navigate("/signIn", { replace: true })
+                            : false;
+                        }, 3000)
+                    })
+                setDataLogin({ username: '', email: '', password: '' });
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const handleChange = (ev) => {

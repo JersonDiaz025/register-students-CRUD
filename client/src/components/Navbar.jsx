@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 import Title from './Title';
-import Header from './Header';
 import { AiFillHome } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 import { GiArchiveRegister } from "react-icons/gi";
@@ -9,9 +8,11 @@ import { BsInfoCircle } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
+import { logOutUser } from '../hooks/useLogout'
 
 const Navbar = (props) => {
-  const { handleActionsMenu, handlelogOut } = props;
+  const { handleActionsMenu, dispatch } = props;
+  const { handlelogOut } = logOutUser(dispatch);
 
   return (
     <div className="sidebar">
@@ -33,6 +34,7 @@ const Navbar = (props) => {
             <Link to="/" className="links">
               <AiFillHome className="icons-nav" />
               <span>Home</span>
+              <span className="span-select"></span>
             </Link>
             <Link to="/students" className="links">
               <HiUserGroup className="icons-nav" />
@@ -47,10 +49,10 @@ const Navbar = (props) => {
               About
             </Link>
             {/* <Link to="/login">Login</Link> */}
-            <Link to="/signUp" className="links">
+            {/* <Link to="/signUp" className="links">
               <FaRegUser className="icons-nav" />
               Sign-Up
-            </Link>
+            </Link> */}
           </div>
           <div className="sidebar-footer">
             {/* <span className="sidebar-item-label">Logout</span> */}

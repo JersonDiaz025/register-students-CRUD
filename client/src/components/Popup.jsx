@@ -1,5 +1,7 @@
+import React from "react";
+
 const Popup = (props) => {
-    const { text, status, button_text, handleAccept, setOpenPopup } = props;
+  const { text, status, button_text, handleAccept, setOpenPopup } = props;
 
   const handleClose = () => {
     setOpenPopup(!Popup.open);

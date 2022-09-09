@@ -1,8 +1,7 @@
 import React from 'react';
-import ModalEdit from './ModalEdit';
-import Popup from './Popup';
+import ModalEdit from '../components/ModalEdit';
+import Popup from '../components/Popup';
 import { managerHooks } from '../hooks/useHooksModal';
-
 
 const Content = ({ orders, updateStudent }) => {
   // import customHooks

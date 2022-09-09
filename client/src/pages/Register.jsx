@@ -1,10 +1,9 @@
 import React from 'react';
-import Title from './Title';
-import Notification from './Notification';
+import Title from '../components/Title';
+import Notification from '../components/Notification';
 import { Link } from 'react-router-dom';
 import { managerDataRegister } from '../hooks/useRegister';
 import { FaUserAlt } from 'react-icons/fa';
-
 const Register = () => {
     const { dataLogin, msgRegister, handleSubmit, handleChange } = managerDataRegister();
   return (

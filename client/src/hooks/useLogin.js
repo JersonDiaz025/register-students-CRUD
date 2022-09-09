@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { postDataLogin } from '../utils/managerOperations';
 import { setLocalStorage } from '../utils/generateLocalStorage';
+import { getUserToken } from '../utils/getUserLocalStorage';
 
-export const managerLogin = (getUserToken) => {
+export const managerLogin = (dispatch) => {
 
     const navigate = useNavigate();
 
@@ -18,24 +19,25 @@ export const managerLogin = (getUserToken) => {
         e.preventDefault();
         try {
             if (loginData.email !== '' && loginData.password !== '') {
-                await postDataLogin(loginData)
-                const { data } = await postDataLogin(loginData)
-                console.log(data)
-                setMsg(data)
-                data?.response === 'Welcome' ?
-                    (setMsg(data),
-                    setLocalStorage(data.user),
-                        navigate('/', { replace: true }),
-                        getUserToken())
-                    :false
+                // await postDataLogin(loginData)
+                const { data } = await postDataLogin(loginData);
+                setMsg(data);
+                if (data?.response === 'Welcome') {
+                    setMsg(data)
+                    setLocalStorage(data.user);
+                    navigate('/', { replace: true });
+                    getUserToken(dispatch);
+                } else {
+                    return false
+                }
                 setTimeout(() => {
                     setMsg(null)
                 }, 3000)
                 setLogin({ email: '', password: '' });
             }
 
-        } catch (error) {
-            console.log(error)
+        } catch (err) {
+            console.log(err)
         }
 
     }

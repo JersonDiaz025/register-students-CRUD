@@ -1,6 +1,5 @@
-import React from 'react';
-import Login from './SignIn';
-import Register from './Register';
+import Login from '../pages/SignIn';
+import Register from '../pages/Register';
 import { Routes, Route } from "react-router-dom";
 
 const FatherComponent = ({ getUserToken }) => {

@@ -171,6 +171,12 @@ body{
     display: flex;
     margin-left: 10px;
 }
+.text-user{
+    font-size: 15px;
+    letter-spacing: inherit;
+    /* box-sizing: content-box; */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .dashbord-header-btn {
     padding: 0.8em;
     padding-left: 2em;
@@ -215,6 +221,7 @@ body{
     justify-content: center;
     position: fixed;
     background: var(--color-basic);
+    border-top-right-radius: 15px;
     /* background-image: linear-gradient(#015C92, #2D83B5, #89CCF6);
     box-shadow: 0px 8px 10px -5px rgb(213 28 28 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%); */
 }
@@ -244,6 +251,16 @@ body{
     color: #FFFFFF;
     text-align: center;
     font-size: 24px;
+}
+
+.span-select{
+    position: absolute;
+    bottom: -1px;
+    height: 4px;
+    background: #61dafb;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 .sidebar-logo-container img {
     width: 50%;
@@ -331,6 +348,7 @@ body{
     position: sticky;
     top: 0;
     /* height: 10px; */
+    
     box-sizing: border-box;
     box-shadow: 0px 2px 10px -1px rgba(204, 180, 180, 0.2), 0px 1px 2px 2px rgba(184, 150, 150, 0.14), 0px 6px 3px 0px rgba(49, 48, 48, 0.12);
 }
@@ -341,7 +359,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5.5vh;
+    height: 8vh;
 }
 
 .container-action{
@@ -362,8 +380,17 @@ body{
     display: flex;
     width: 45%;
     justify-content: flex-end;
-    /* padding-right: 1px; */
+    /* flex-direction: row; */
+    padding-right: 1px;
 
+}
+
+.container-not-user{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+            /* flex-direction: row; */
+            /* padding-right: 1px; */
 }
 .container-profile-info{
     width: 50%;
@@ -373,8 +400,14 @@ body{
 }
 .title-login{
     margin-right: 15px;
+    font-weight:800;
 }
 .icon-user{
+    width: 30px;
+    height: 30px;
+    color: #21605D;
+}
+.icon-dark{
     width: 30px;
     height: 30px;
     color: #21605D;
@@ -1015,3 +1048,25 @@ label{
     height: 30px;
     color: green
 } */
+
+
+/* ------------------------------------------------------home------------------------------ */
+.main-home{
+    /* background-color: #1fcc61; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+}
+.content-home{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    width: 95%;
+    border-radius: 10px;
+    height: 80vh;
+    margin-top: 20px;
+    background-color: rgb(231, 224, 211);
+}

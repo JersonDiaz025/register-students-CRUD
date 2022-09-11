@@ -1,5 +1,5 @@
-import Header from "./components/Header";
 import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
 import Form from "./components/Form";
@@ -10,10 +10,6 @@ import SidebarHeader from "./components/SidebarHeader";
 import { ActionsMenu } from "./hooks/useActionsMenu";
 import Register from "./pages/Register";
 import Login from "./pages/SignIn";
-import NotAuthNavbar from "./components/NologgedUser";
-// import { serviceUser } from "./hooks/useUser";
-// import FatherComponent from "./components/FatherComponent";
-// import ProctedRoute from "./components/ProctedRoute";
 import { getUserToken } from "./utils/getUserLocalStorage";
 import React, { useContext, useEffect} from 'react';
 import { Context } from "./store/StoreProvider";
@@ -35,16 +31,19 @@ function App() {
   return (
     <Router>
       <div className="dashboard-container">
-        {isLogged ? (
+        {isLogged && (
           <div>
-            <Header
+            <Navbar
               handleActionsMenu={handleActionsMenu}
               name_user={name_user}
             />
-            {open && <Navbar handleActionsMenu={handleActionsMenu} dispatch={ dispatch } />}
+            {open && (
+              <Sidebar
+                handleActionsMenu={handleActionsMenu}
+                dispatch={dispatch}
+              />
+            )}
           </div>
-        ) : (
-          <NotAuthNavbar/>
         )}
         {data?.data ? (
           <Routes>

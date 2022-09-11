@@ -21,14 +21,13 @@ export const managerLogin = (dispatch) => {
             if (loginData.email !== '' && loginData.password !== '') {
                 // await postDataLogin(loginData)
                 const { data } = await postDataLogin(loginData);
+                console.log(data)
                 setMsg(data);
                 if (data?.response === 'Welcome') {
                     setMsg(data)
                     setLocalStorage(data.user);
                     navigate('/', { replace: true });
                     getUserToken(dispatch);
-                } else {
-                    return false
                 }
                 setTimeout(() => {
                     setMsg(null)

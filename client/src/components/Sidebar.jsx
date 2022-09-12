@@ -8,17 +8,20 @@ import { BsInfoCircle } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
-import { logOutUser } from '../hooks/useLogout'
+import { logOutUser } from "../hooks/useLogout";
 
 const Sidebar = (props) => {
-  const { handleActionsMenu, dispatch } = props;
+  const { store, dispatch } = props;
+  const { sidebar } = store;
+  const { openSidebar } = sidebar;
+
   const { handlelogOut } = logOutUser(dispatch);
 
   return (
     <div className="sidebar">
       <nav className="sidebar-container">
         <div className="container-close-nav">
-          <IoClose className="icon-close" onClick={handleActionsMenu} />
+          <IoClose className="icon-close" onClick={()=> {dispatch({ type: "ACTION_SIDEBAR" })}} />
         </div>
 
         <div className="sidebar-logo-container">
@@ -33,7 +36,7 @@ const Sidebar = (props) => {
           <div className="sidebar-items">
             <Link to="/" className="links">
               <AiFillHome className="icons-nav" />
-              <span>Home</span>
+              <span>Dashboard</span>
               <span className="span-select"></span>
             </Link>
             <Link to="/students" className="links">

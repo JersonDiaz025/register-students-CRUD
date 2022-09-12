@@ -17,6 +17,8 @@ const Form = ({ updateStudent }) => {
 
   return (
     <div className="container-main-form">
+      <Title data={"ADD STUDENT"} stylesTitle={`${"title-add-student"}`} />
+      <div className="line-bottom" />
       <div className="container-form">
         <div className="container-header">
           <img

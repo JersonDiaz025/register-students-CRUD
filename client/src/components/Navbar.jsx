@@ -1,21 +1,17 @@
 import { Link } from 'react-router-dom';
-import { ImUsers } from "react-icons/im";
 import { AiOutlineMenu } from "react-icons/ai";
-import { MdOutlineLightMode } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
 import PopupUser from './PopupUser';
-import { useState } from 'react';
+import { logOutUser } from '../hooks/useLogout';
 
 const Navbar = (props) => {
-  const { handleActionsMenu, name_user } = props;
 
-  const [openM, setOpenM] = useState(false)
+  const { store, dispatch } = props;
+  const { navbar, user } = store;
+  const { name_user } = user;
+  const { openModalUser } = navbar;
 
-
-
-
-  const handleOpenActionUser = () => {
-    setOpenM(!openM)
-  }
+  const { handlelogOut } = logOutUser(dispatch);
 
   return (
     <div className="container-nav-header">
@@ -23,23 +19,26 @@ const Navbar = (props) => {
         <div className="container-action">
           <AiOutlineMenu
             className="btn-close-header"
-            onClick={handleActionsMenu}
+            onClick={() => {
+              dispatch({ type: "ACTION_SIDEBAR" });
+            }}
           />
         </div>
         <div className="content-login">
           <div
             className="container-profile-info"
-            onClick={handleOpenActionUser}
+            onClick={() => {
+              dispatch({ type: "ACTION_NAVBAR" });
+            }}
           >
-            {/* <MdOutlineLightMode className='icon-dark'/> */}
             <div className="title-login">
               <span className="text-user">
-                Hi, {`${name_user !== "" && name_user}`}
+                {`${name_user !== "" && name_user}`}
               </span>
             </div>
-            <ImUsers className="icon-user" />
+            <FaUserCircle className="icon-user" />
           </div>
-          {openM && <PopupUser />}
+          {openModalUser && <PopupUser handlelogOut={handlelogOut} />}
         </div>
       </div>
     </div>

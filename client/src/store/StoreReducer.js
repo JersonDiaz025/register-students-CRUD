@@ -23,6 +23,16 @@ const Reducer = (state, action) => {
                 ...state,
                 user: { name_user: '' , isLogged: false }
             }
+        case "ACTION_NAVBAR":
+            return {
+                ...state,
+                navbar: { openModalUser: !state.navbar.openModalUser }
+            }
+        case "ACTION_SIDEBAR":
+            return {
+                ...state,
+                sidebar: { openSidebar: !state.sidebar.openSidebar }
+            }
         default:
             return state;
     }

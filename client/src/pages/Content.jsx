@@ -8,7 +8,6 @@ const Content = ({ orders, updateStudent }) => {
   const { dataEdit, openModal, popup, handleUpdate, handleCloseModal,
     handleSendUpdate, handleAccept, handleDelete, setOpenPopup } = managerHooks(updateStudent);
 
-
   const ShowModal = () => {
     return (
       <>

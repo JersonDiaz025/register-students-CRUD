@@ -7,22 +7,22 @@ import Loader from "./components/Loader";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getData } from "./hooks/useGetData";
 import SidebarHeader from "./components/SidebarHeader";
-import { ActionsMenu } from "./hooks/useActionsMenu";
 import Register from "./pages/Register";
 import Login from "./pages/SignIn";
 import { getUserToken } from "./utils/getUserLocalStorage";
 import React, { useContext, useEffect} from 'react';
 import { Context } from "./store/StoreProvider";
 
+
 function App() {
 
   const [store, dispatch] = useContext(Context);
+  const { sidebar } = store;
+  const { openSidebar } = sidebar;
   const { user } = store;
-  const { name_user, isLogged } = user;
-  
-  const { data, updateStudent } = getData();
+  const { isLogged } = user;
 
-  const { open, handleActionsMenu } = ActionsMenu();
+  const { data, updateStudent } = getData();
 
   useEffect(() => { 
     getUserToken(dispatch)
@@ -32,18 +32,18 @@ function App() {
     <Router>
       <div className="dashboard-container">
         {isLogged && (
-          <div>
+          <>
             <Navbar
-              handleActionsMenu={handleActionsMenu}
-              name_user={name_user}
+              store={store}
+              dispatch={dispatch}
             />
-            {open && (
+            {openSidebar && (
               <Sidebar
-                handleActionsMenu={handleActionsMenu}
                 dispatch={dispatch}
+                store={store}
               />
             )}
-          </div>
+          </>
         )}
         {data?.data ? (
           <Routes>

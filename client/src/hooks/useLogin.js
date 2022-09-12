@@ -21,7 +21,6 @@ export const managerLogin = (dispatch) => {
             if (loginData.email !== '' && loginData.password !== '') {
                 // await postDataLogin(loginData)
                 const { data } = await postDataLogin(loginData);
-                console.log(data)
                 setMsg(data);
                 if (data?.response === 'Welcome') {
                     setMsg(data)

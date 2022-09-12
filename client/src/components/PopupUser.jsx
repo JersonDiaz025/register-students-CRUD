@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaUserAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-import { FaUserEdit } from "react-icons/fa"
+import { FaUserEdit } from "react-icons/fa";
+import { MdOutlineLightMode } from "react-icons/md";
+import { MdDarkMode, MdOutlineDarkMode} from "react-icons/md";
 
-const PopupUser = () => {
+
+const PopupUser = (props) => {
+
+  const { handlelogOut } = props;
+    const [a, setA] = useState(false)
+
+
+    const handleSelectIconMode = () => {
+        setA(!a)
+    }
     return (
       <div className="container-popup-user">
         <div
@@ -19,17 +30,25 @@ const PopupUser = () => {
         <div className="popup-user">
           <div className="perfil">
             <FaUserAlt className="icon-user-popup" />
-            <p className="p">Perfil</p>
+            <span className="text-user">Perfil</span>
           </div>
           <div className="perfil">
             <FaUserEdit className="icon-user-edit1" />
-            <p className="p">Edit perfil</p>
+            <span className="text-user">Edit perfil</span>
+          </div>
+          <div className="perfil" onClick={handleSelectIconMode}>
+            {a ? (
+              <MdDarkMode className="icon-dark-mode" />
+            ) : (
+              <MdOutlineDarkMode className="icon-dark-mode" />
+            )}
+            <span className="text-user">Dark mode</span>
           </div>
         </div>
         <hr></hr>
-        <div className="logout">
+        <div className="logout" onClick={handlelogOut}>
           <FiLogOut className="logout-icon" />
-          <p>Log-Out</p>
+          <span className="text-user">Log-Out</span>
         </div>
       </div>
     );

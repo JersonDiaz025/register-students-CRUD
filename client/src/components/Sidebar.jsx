@@ -21,7 +21,12 @@ const Sidebar = (props) => {
     <div className="sidebar">
       <nav className="sidebar-container">
         <div className="container-close-nav">
-          <IoClose className="icon-close" onClick={()=> {dispatch({ type: "ACTION_SIDEBAR" })}} />
+          <IoClose
+            className="icon-close"
+            onClick={() => {
+              dispatch({ type: "ACTION_SIDEBAR" });
+            }}
+          />
         </div>
 
         <div className="sidebar-logo-container">
@@ -34,31 +39,49 @@ const Sidebar = (props) => {
         </div>
         <div className="sidebar-container">
           <div className="sidebar-items">
-            <Link to="/" className="links">
+            <Link
+              to="/"
+              className="links"
+              onClick={() => {
+                dispatch({ type: "ACTION_SIDEBAR" });
+              }}
+            >
               <AiFillHome className="icons-nav" />
               <span>Dashboard</span>
-              <span className="span-select"></span>
             </Link>
-            <Link to="/students" className="links">
+            <Link
+              to="/students"
+              className="links"
+              onClick={() => {
+                dispatch({ type: "ACTION_SIDEBAR" });
+              }}
+            >
               <HiUserGroup className="icons-nav" />
               <span>All students</span>
             </Link>
-            <Link to="/register" className="links">
+            <Link
+              to="/register"
+              className="links"
+              onClick={() => {
+                dispatch({ type: "ACTION_SIDEBAR" });
+              }}
+            >
               <GiArchiveRegister className="icons-nav" />
               Add student
             </Link>
-            <Link to="/about" className="links">
+            <Link
+              to="/about"
+              className="links"
+              onClick={() => {
+                dispatch({ type: "ACTION_SIDEBAR" });
+              }}
+            >
               <BsInfoCircle className="icons-nav" />
               About
             </Link>
-            {/* <Link to="/login">Login</Link> */}
-            {/* <Link to="/signUp" className="links">
-              <FaRegUser className="icons-nav" />
-              Sign-Up
-            </Link> */}
           </div>
-          <div className="sidebar-footer">
-            {/* <span className="sidebar-item-label">Logout</span> */}
+          <div className="sidebar-footer"
+            onClick={() => { dispatch({ type: "ACTION_SIDEBAR" }) }}>
             <p className="links">Log-Out</p>
             <FiLogOut className="icon-logOut" onClick={handlelogOut} />
           </div>

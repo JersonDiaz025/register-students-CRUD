@@ -3,9 +3,10 @@ import Reducer from './storeReducer';
 
 
 const initialStore = {
-  user: { name_user: "", isLogged: null },
-  navbar: { openModalUser: false },
-  sidebar: { openSidebar: false },
+    user: { name_user: "", isLogged: null },
+    navbar: { openModalUser: false },
+    sidebar: { openSidebar: false },
+    dark_mode: { activeDarkMode: false }
 };
 
 // store que envolvera el app para que los componentes tomen el estado gobal

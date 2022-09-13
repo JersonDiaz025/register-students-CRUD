@@ -33,6 +33,11 @@ const Reducer = (state, action) => {
                 ...state,
                 sidebar: { openSidebar: !state.sidebar.openSidebar }
             }
+        case "DARK_MODE":
+            return {
+                ...state,
+                dark_mode: { activeDarkMode: !state.dark_mode.activeDarkMode }
+            }
         default:
             return state;
     }

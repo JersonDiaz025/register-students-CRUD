@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+
 import { FaUserAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
+import {BiEdit } from "react-icons/bi"
 import { FaUserEdit } from "react-icons/fa";
 import { MdOutlineLightMode } from "react-icons/md";
 import { MdDarkMode, MdOutlineDarkMode} from "react-icons/md";
@@ -8,23 +9,12 @@ import { MdDarkMode, MdOutlineDarkMode} from "react-icons/md";
 
 const PopupUser = (props) => {
 
-  const { handlelogOut } = props;
-    const [a, setA] = useState(false)
+  const { handlelogOut, activeDarkMode, dispatch } = props;
 
-
-    const handleSelectIconMode = () => {
-        setA(!a)
-    }
-    return (
-      <div className="container-popup-user">
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-          }}
-        >
+  return (
+    <div className="container-popup-user">
+      <div className="main-user-popup">
+        <div className="sub_container-popup-user">
           <div className="triangle"></div>
         </div>
         <div className="popup-user">
@@ -33,25 +23,29 @@ const PopupUser = (props) => {
             <span className="text-user">Perfil</span>
           </div>
           <div className="perfil">
-            <FaUserEdit className="icon-user-edit1" />
+            <BiEdit className="icon-user-edit1" />
             <span className="text-user">Edit perfil</span>
           </div>
-          <div className="perfil" onClick={handleSelectIconMode}>
-            {a ? (
-              <MdDarkMode className="icon-dark-mode" />
+          <div
+            className="perfil"
+            onClick={() => dispatch({ type: "DARK_MODE" })}
+          >
+            {activeDarkMode ? (
+              <MdDarkMode className="icon-dark-mode-active" />
             ) : (
               <MdOutlineDarkMode className="icon-dark-mode" />
             )}
             <span className="text-user">Dark mode</span>
           </div>
-        </div>
-        <hr></hr>
-        <div className="logout" onClick={handlelogOut}>
-          <FiLogOut className="logout-icon" />
-          <span className="text-user">Log-Out</span>
+          <hr className="line-logout" />
+          <footer className="logout" onClick={handlelogOut}>
+            <FiLogOut className="logout-icon" />
+            <span className="text-user">Log-Out</span>
+          </footer>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default PopupUser;

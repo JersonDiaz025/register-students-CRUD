@@ -1,11 +1,10 @@
-import React from "react";
+import "./index.css";
 import { Link } from "react-router-dom";
-import Content from "../pages/Content";
-import { findResult } from "../hooks/useFilter";
+import Content from "../../pages/dataTableUser/Content";
+import { findResult } from "../../hooks/useFilter";
 
-const SidebarHeader = ({ data, updateStudent }) => {
-  const { filterData, orders, _handleChange } = findResult(data);
-
+const FilterTable = ({ props }) => {
+  const { filterData, orders, _handleChange } = findResult(props?.data);
   return (
     <div>
       <div className="container-title">
@@ -26,9 +25,9 @@ const SidebarHeader = ({ data, updateStudent }) => {
         </div>
         <hr className="hr"></hr>
       </div>
-      <Content updateStudent={updateStudent} orders={orders} />
+      <Content updateStudent={props?.updateStudent} orders={orders} />
     </div>
   );
 };
 
-export default SidebarHeader;
+export default FilterTable;

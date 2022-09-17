@@ -14,7 +14,6 @@ const UsersRegister = new Schema(
 UsersRegister.statics.encryptPassword = async (password) => {
     const encryptPass = await bcrypt.genSalt(10);
     return await bcrypt.hash(password, encryptPass);
-
 };
 
 // compare password

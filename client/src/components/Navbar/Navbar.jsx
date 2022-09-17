@@ -1,12 +1,14 @@
+import "./index.css";
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
-import PopupUser from './PopupUser';
-import { logOutUser } from '../hooks/useLogout';
+import { logOutUser } from '../../hooks/useLogout';
+import { linskNavbar } from "../../Routes-config/links";
 import { AiFillHome } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 import { GiArchiveRegister } from "react-icons/gi";
 import { BsInfoCircle } from "react-icons/bs";
+import PopupUser from "../PopupProfile/PopupUser";
 
 const Navbar = (props) => {
 
@@ -16,6 +18,7 @@ const Navbar = (props) => {
   const { name_user } = user;
   const { openModalUser } = navbar;
 
+  const { links_navbar } = linskNavbar();
   const { handlelogOut } = logOutUser(dispatch);
 
   return (
@@ -30,28 +33,15 @@ const Navbar = (props) => {
           />
         </div>
         <div className="container-links-nav">
-          <div className="sub-container-navbs">
-            <Link to="/" className="links-navbar">
-              {/* <AiFillHome className="icons-nav" /> */}
-              <span>Dashboard</span>
-              <div className="line-span"></div>
-            </Link>
-            <Link to="/students" className="links-navbar">
-              {/* <HiUserGroup className="icons-nav" /> */}
-              <span>All students</span>
-              <div className="line-span"></div>
-            </Link>
-            <Link to="/register" className="links-navbar">
-              {/* <GiArchiveRegister className="icons-nav" /> */}
-              <span>Add student</span>
-              <div className="line-span"></div>
-            </Link>
-            <Link to="/about" className="links-navbar">
-              {/* <BsInfoCircle className="icons-nav" /> */}
-              <span>About</span>
-              <div className="line-span"></div>
-            </Link>
-          </div>
+          {links_navbar?.map(
+            ({ to, className, text, icon: Image, classIcon }) => (
+              <Link to={to} className="links-navbar">
+                <Image className={classIcon} />
+                <span>{text}</span>
+                <div className="line-span"></div>
+              </Link>
+            )
+          )}
         </div>
         <div
           className="container-profile-info"
@@ -60,9 +50,9 @@ const Navbar = (props) => {
           }}
         >
           <div className="title-login">
-            <span className="text-user">
+            {/* <span className="text-user">
               {`${name_user !== "" && name_user}`}
-            </span>
+            </span> */}
             <FaUserCircle className="icon-user" />
             {openModalUser && (
               <PopupUser

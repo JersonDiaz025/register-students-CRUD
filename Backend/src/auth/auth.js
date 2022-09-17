@@ -1,7 +1,6 @@
 const User = require('../models/users');
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
-const { serialize } = require('cookie');
 
 // register
 const signUp = async (req, res) => {
@@ -46,7 +45,7 @@ const signIn = async (req, res) => {
 
         } else {
             const token = jwt.sign({ id: verifyUserExistent._id }, config.SECRET, { expiresIn: 86400 });
-            return res.status(200).json({ value: true, response: 'Welcome', user: { username: verifyUserExistent.username, token } });
+            return res.status(200).json({ value: true, response: 'Welcome', user: { username: verifyUserExistent.username, email:verifyUserExistent.email, password:password, token } });
             // res.setHeader('Set-Cookie', token)
 
             // serialized

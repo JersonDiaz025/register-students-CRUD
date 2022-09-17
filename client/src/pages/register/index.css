@@ -1,0 +1,226 @@
+.main-container-register {
+    height: 100vh;
+    width: 100%;
+    background: #f2eee3;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, var(--white-color) 8%, rgba(218, 209, 209, 0.801) 100%);
+}
+
+.register-content {
+    width: 71%;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 4px 22px -5px #0004;
+    display: flex;
+    overflow: hidden;
+}
+
+.container-register-left {
+    width: 40%;
+    height: 100%;
+    padding: 25px 25px;
+    background: linear-gradient(-45deg, #dcd7e0, #fff);
+
+
+}
+.left-content-register {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.all-content-register {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+}
+.header-title {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon-register {
+    width: 30px;
+    height: 30px;
+    color: #21605D
+}
+.title-register {
+    font-size: 2rem;
+    font-variant: inherit;
+    font-weight: bold;
+}
+.main-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    height: 77%;
+    width: 100%;
+}
+.form-register {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.containers-labels-inputs {
+    width: 100%;
+}
+.container-label-email {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.label {
+    font-family: 'Kanit', sans-serif;
+    width: 98%;
+    margin-bottom: 10px;
+}
+
+.link-signup {
+    padding: 12px 19px;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    color: #3f3b3b;
+    background: #e6e6ebe5;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    cursor: pointer;
+    margin-right: 8px;
+
+}
+
+.right {
+    background: url(https://cdn.dribbble.com/users/118246/screenshots/5343519/wifi.gif);
+    background-size: cover;
+    color: rgb(90, 67, 67);
+    position: relative;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+.right-text {
+    height: 100%;
+    position: relative;
+    display: flex;
+    height: 18vh;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.sign-btn {
+    padding: 20px;
+    padding-left: 2em;
+    display: flex;
+    color: #0f0f0f;
+    list-style: none;
+    text-decoration: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.right {
+    width: 60%;
+    height: 100%
+}
+
+.icon-login {
+    width: 40px;
+    height: 40px;
+    color: #21605D
+}
+
+#username,
+#email,
+#password {
+    font-style: inherit;
+    font-family: inherit;
+    border: 0.5px solid #2523237c;
+    background: none transparent;
+    margin: 0px;
+    min-width: 0px;
+    width: 94%;
+    border-radius: 5px;
+    font-size: 0.77rem;
+    padding: 0.623rem;
+}
+
+.msg-alert {
+    padding: 2px 5px 0px 5px;
+    background-color: #f8d7da;
+    border: 1px #e4c2c5 solid;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #c01d2b;
+    line-height: 18px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+}
+
+.link-reg {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+}
+
+#email:hover {
+    box-shadow: 3px 2px 8px 8px#8cb3e094;
+}
+
+#password:hover {
+    box-shadow: 3px 2px 8px 8px#8cb3e094;
+}
+
+.container-label-password {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-btn-login {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-login-send {
+    width: 100%;
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 0px;
+    background-color: var(--two);
+}

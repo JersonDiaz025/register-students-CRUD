@@ -2,11 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { postDataRegister } from "../utils/managerOperations";
 
-export const managerDataRegister = () => {
+export const managerDataRegister = (dispatch) => {
     const navigate = useNavigate();
-
-    const [msgRegister, setMsgRegister] = useState(null);
-
 
     const [dataLogin, setDataLogin] = useState(
         {
@@ -16,21 +13,24 @@ export const managerDataRegister = () => {
         }
         );
 
-    const handleSubmit = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
         try {
             if (dataLogin.username !== '' && dataLogin.email !== '' && dataLogin.password !== '') {
-                await postDataRegister(dataLogin)
-                    .then(res => {
-                        const { data } = res;
-                        setMsgRegister(data)
-                        setTimeout(() => {
-                            setMsgRegister(null)
-                            data?.response === 'Successfully registered'
-                            ? navigate("/signIn", { replace: true })
-                            : false;
-                        }, 3000)
+                const { data } = await postDataRegister(dataLogin);
+                dispatch({
+                    type: "MSG_POPUP",
+                    payload: { openPopup: true, msgResponse: data }
+                })
+                if (data?.response === 'Successfully registered') {
+                    navigate("/signIn", { replace: true })
+                }
+                setTimeout(() => {
+                    dispatch({
+                        type: "MSG_POPUP",
+                        payload: { openPopup: false, msgResponse: null }
                     })
+                }, 3000)
                 setDataLogin({ username: '', email: '', password: '' });
             }
         } catch (err) {
@@ -47,8 +47,7 @@ export const managerDataRegister = () => {
 
     return {
         dataLogin,
-        msgRegister,
-        handleSubmit,
+        handleSignUp,
         handleChange
     };
 }

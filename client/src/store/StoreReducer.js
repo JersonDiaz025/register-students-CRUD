@@ -16,7 +16,7 @@ const Reducer = (state, action) => {
         case "AUTH_LOGIN":
             return {
                 ...state,
-                user: action.payload
+                user: action.payload,
             }
         case "AUTH_LOGOUT":
             return {
@@ -38,6 +38,12 @@ const Reducer = (state, action) => {
                 ...state,
                 dark_mode: { activeDarkMode: !state.dark_mode.activeDarkMode }
             }
+        case "MSG_POPUP":
+            return {
+                ...state,
+                msgPopup: action.payload,
+            }
+        
         default:
             return state;
     }

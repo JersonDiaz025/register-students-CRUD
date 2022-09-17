@@ -1,0 +1,99 @@
+.container-alert-popup {
+    width: 100%;
+    inset: 0;
+    height: 100vh;
+    backdrop-filter: blur(0.6px);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+}
+
+.container-popup {
+    width: 100%;
+    inset: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(246, 242, 242, 0.534);
+
+}
+
+.popup {
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    height: 20%;
+    min-height: 199px;
+    box-shadow: 1px 1px 15px rgba(7, 7, 7, 0.589);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(246, 242, 242, 0.807);
+}
+
+.container-btn-popup {
+    width: 90%;
+    position: absolute;
+    top: 160px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-popup {
+    width: 30%;
+    font-weight: 800;
+    max-width: 230px;
+    padding: 0.6em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 0px;
+    background-color: #015C92;
+}
+
+.icon {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    right: 10px;
+}
+
+.span {
+    color: var(--icon-delete);
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.div {
+    position: absolute;
+    top: 10px;
+    right: auto;
+    left: 10px;
+}
+
+.circle {
+    background: var(--icon-edit);
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    position: absolute;
+}
+
+.circle-two {
+    background: var(--icon-delete);
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    position: absolute;
+    left: 20px;
+}

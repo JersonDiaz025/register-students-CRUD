@@ -1,0 +1,77 @@
+.container-sidebar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-title {
+    margin-top: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_ {
+    margin-right: 10px;
+    font-weight: 400;
+    line-height: 1.4em;
+    letter-spacing: 0.009em;
+    cursor: text;
+    display: inline-flex;
+    align-items: center;
+    width: 30%;
+    background-color: transparent;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    border: 1px solid gray;
+}
+
+.container-btn-header {
+    display: flex;
+    margin-left: 10px;
+}
+
+.text-user {
+    font-size: 15px;
+    letter-spacing: inherit;
+    /* box-sizing: content-box; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.dashbord-header-btn {
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    color: var(--white-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid;
+    background-color: var(--two)
+}
+
+.dashboard-input {
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+    border: 0px;
+    box-sizing: content-box;
+    background: none transparent;
+    margin: 0px;
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    /* color: #000000; */
+    font-size: 0.75rem;
+    padding: 0.625rem;
+}

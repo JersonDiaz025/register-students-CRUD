@@ -8,8 +8,6 @@ export const managerLogin = (dispatch) => {
 
     const navigate = useNavigate();
 
-    const [msg, setMsg] = useState(null);
-
     const [loginData, setLogin] = useState({
         email: '',
         password: ''
@@ -19,17 +17,22 @@ export const managerLogin = (dispatch) => {
         e.preventDefault();
         try {
             if (loginData.email !== '' && loginData.password !== '') {
-                // await postDataLogin(loginData)
                 const { data } = await postDataLogin(loginData);
-                setMsg(data);
+                console.log(data)
+                dispatch({
+                    type: "MSG_POPUP",
+                    payload: { openPopup: true, msgResponse: data }
+                })
                 if (data?.response === 'Welcome') {
-                    setMsg(data)
                     setLocalStorage(data.user);
                     navigate('/', { replace: true });
                     getUserToken(dispatch);
                 }
                 setTimeout(() => {
-                    setMsg(null)
+                    dispatch({
+                        type: "MSG_POPUP",
+                        payload: { openPopup: false, msgResponse: null }
+                    })
                 }, 3000)
                 setLogin({ email: '', password: '' });
             }
@@ -51,7 +54,6 @@ export const managerLogin = (dispatch) => {
         login: loginData,
         handleLogin,
         handleChange,
-        msg
     }
 
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import Title from "./Title";
-import { managerDataUpdate } from "../hooks/useDataUpdate";
+import "./index.css";
+import Title from "../Title/Title";
+import { managerDataUpdate } from "../../hooks/useDataUpdate";
 
 const ModalEdit = (props) => {
   const { text_title, text_button, text_button_close, handleCloseModal } =

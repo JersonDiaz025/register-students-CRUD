@@ -1,4 +1,5 @@
-
+import "./index.css";
+import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import {BiEdit } from "react-icons/bi"
@@ -20,7 +21,9 @@ const PopupUser = (props) => {
         <div className="popup-user">
           <div className="perfil">
             <FaUserAlt className="icon-user-popup" />
-            <span className="text-user">Perfil</span>
+            <Link to="/profile">
+              <span className="text-user">Perfil</span>
+            </Link>
           </div>
           <div className="perfil">
             <BiEdit className="icon-user-edit1" />

@@ -1,0 +1,104 @@
+.container-main-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-form {
+    display: flex;
+    margin: 20px auto;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+    min-width: 40%;
+    height: auto;
+    padding: 20px 20px 20px 20px;
+    box-shadow: 3px 2px 8px 8px var(--light);
+    ;
+    /* background: linear-gradient(0deg, rgb(170, 178, 179) 0%, rgba(224, 63, 63, 0.336) 100%); */
+}
+
+.container-header {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    height: 150px;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.title-add-student {
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.title-form {
+    margin-top: 10px;
+    color: #272626;
+    font-size: 26px;
+}
+
+.image {
+    margin-top: 10px;
+    width: 80px;
+    height: 70px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px
+}
+
+.conteiner-input {
+    display: flex;
+    align-items: center;
+}
+
+#input {
+    font-style: inherit;
+    font-family: inherit;
+    border: 0.5px solid #2523237c;
+    background: none transparent;
+    margin: 0px;
+    min-width: 0px;
+    width: 40%;
+    border-radius: 5px;
+    font-size: 0.77rem;
+    padding: 0.625rem;
+    /* text-transform: uppercase; */
+}
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.container-btn button {
+    width: 90%;
+    max-width: 230px;
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    color: var(--white-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #2728297c;
+    background-color: var(--color-basic);
+}

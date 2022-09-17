@@ -1,7 +1,7 @@
-import React from 'react';
-import ModalEdit from '../components/ModalEdit';
-import Popup from '../components/Popup';
-import { managerHooks } from '../hooks/useHooksModal';
+import "./index.css";
+import ModalEdit from '../../components/UpdateUser/ModalEdit';
+import AlertPopup from "../../components/ConfirmationPopup/AlertPopup";
+import { managerHooks } from '../../hooks/useHooksModal';
 
 const Content = ({ orders, updateStudent }) => {
   // import customHooks
@@ -25,12 +25,16 @@ const Content = ({ orders, updateStudent }) => {
   const ShowPopup = () => {
     return (
       <>
-        {popup?.open &&
-          <Popup text={`Sure you want to delete? ${popup?.name_student[0]}`}
-            button_text={"Accept"} handleAccept={handleAccept} setOpenPopup={setOpenPopup} />
-        }
+        {popup?.open && (
+          <AlertPopup
+            text={`Sure you want to delete? ${popup?.name_student[0]}`}
+            button_text={"Accept"}
+            handleAccept={handleAccept}
+            setOpenPopup={setOpenPopup}
+          />
+        )}
       </>
-    )
+    );
   }
 
   return orders?.length !== 0 ? (

@@ -7,7 +7,7 @@ function getUserToken(dispatch){
         const { username, token } = getUser;
         dispatch({
             type: "AUTH_LOGIN",
-            payload: { name_user: username, isLogged: true }
+            payload: { name_user: username, isLogged: true, token }
         })
     }
 }

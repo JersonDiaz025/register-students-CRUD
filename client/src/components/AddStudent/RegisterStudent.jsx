@@ -1,10 +1,10 @@
-import React from "react";
-import Title from "./Title";
-import { managerDataForm } from "../hooks/useForm";
+import "./index.css";
+import Title from "../Title/Title";
+import { managerDataForm } from "../../hooks/useForm";
 
-const Form = ({ updateStudent }) => {
+const RegisterStudent = ({props}) => {
   // destructuring dates from hooks
-  const { data, handleSubmit, handleChange } = managerDataForm(updateStudent);
+  const { data, handleSubmit, handleChange } = managerDataForm(props?.updateStudent);
 
   const values = {
     name: data.name[0] ? data.name[0] : "",
@@ -95,4 +95,4 @@ const Form = ({ updateStudent }) => {
   );
 };
 
-export default Form;
+export default RegisterStudent;

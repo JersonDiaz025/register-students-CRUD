@@ -1,0 +1,115 @@
+.container-main-modal {
+    /* position: absolute; */
+    top: 50px;
+    width: 100%;
+    inset: 0;
+    backdrop-filter: blur(0.10px);
+    position: fixed;
+    display: flex;
+    z-index: 5000;
+    justify-content: center;
+    align-items: center;
+    background: rgba(246, 242, 242, 0.925);
+}
+
+.container-form-modal {
+    border-radius: 15px;
+    width: 30%;
+    max-width: 340px;
+    min-width: 275px;
+    height: auto;
+    padding: 20px 20px 20px 20px;
+    box-shadow: 3px 2px 8px 8px#646262;
+
+}
+
+.header-modal {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+
+.form-modal {
+    display: flex;
+    width: 100%;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+#input-modal {
+    font-style: inherit;
+    font-family: inherit;
+    border: 0.5px solid #2523237c;
+    background: none transparent;
+    margin: 0px;
+    min-width: 0px;
+    width: 90%;
+    border-radius: 5px;
+    font-size: 0.77rem;
+    padding: 0.623rem;
+}
+
+.container-label {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+label {
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    width: 93%;
+}
+
+.container-btn-modal {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-top: 9px;
+}
+
+.btn-modal {
+    width: 40%;
+    max-width: 230px;
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 0px;
+    background-color: #015C92;
+}
+
+.btn-close {
+    width: 40%;
+    max-width: 230px;
+    padding: 0.8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 0px;
+    background-color: #cc1f28;
+}

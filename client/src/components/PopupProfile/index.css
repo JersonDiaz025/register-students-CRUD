@@ -1,0 +1,120 @@
+.container-popup-user {
+    position: absolute;
+    min-width: 240px;
+    max-width: 60%;
+}
+
+.sub_container-popup-user {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.triangle {
+    position: absolute;
+    background-color: rgb(254, 255, 254);
+    clip-path: path('M8 0C8 4 9.32406e-08 7.819 1.25211e-07 10.5C1.57188e-07 13.1815 8 17.0005 8 21L8 0Z');
+    height: 19px;
+    width: 19px;
+    transform: rotate(450deg);
+    top: -8px;
+    margin-right: 5px;
+
+}
+
+.main-user-popup {
+    position: absolute;
+    width: 92%;
+    padding-right: 5px;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    right: 85%;
+    z-index: 3;
+    background-color: rgb(254, 255, 254);
+    box-shadow: 3px 2px 8px 8px var(--light);
+    border-radius: 5px;
+
+}
+
+.popup-user {
+    align-items: stretch;
+    border: 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font: inherit;
+    font-size: 100%;
+    height: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    width: 100%;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.perfil:hover {
+    background: #e2e4e7c2;
+}
+
+.icon-user-popup {
+    width: 24px;
+    /* height: 18px; */
+    margin-right: 4px;
+}
+
+.icon-user-edit1 {
+    width: 25px;
+    height: 30px;
+    margin-right: 4px;
+}
+
+.logout {
+    /* width: 100%; */
+    color: red;
+    cursor: pointer;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding:0 15px;
+    margin-bottom: 8px;
+}
+
+.text-user {
+    color: rgb(7, 7, 7);
+    margin-left: 15px;
+}
+
+.line-logout {
+    width: 98%;
+}
+
+.logout-icon {
+    width: 25px;
+    height: 30px;
+    margin-right: 4px;
+}
+
+.icon-dark-mode {
+    width: 30px;
+    height: 36px;
+    margin-right: 1px;
+}
+
+.icon-dark-mode-active {
+    width: 30px;
+    height: 36px;
+    margin-right: 1px;
+    color: var(--dark)
+}

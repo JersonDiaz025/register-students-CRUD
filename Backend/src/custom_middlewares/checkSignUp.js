@@ -7,9 +7,9 @@ const verifyDuplicateUsers = async(req, res, next) => {
 
     if (emailUser) return res.status(400).json({value: false, response: "The email aready exist" });
 
-    const usernameUser = await User.findOne({ username: username });
+    const userName = await User.findOne({ username: username });
 
-    if (usernameUser) return res.status(400).json({value: false, response: "The user aready exist" });
+    if (userName) return res.status(400).json({value: false, response: "The user aready exist" });
     next();
 }
 

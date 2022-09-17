@@ -1,13 +1,13 @@
-import React from "react";
+import "./index.css";
 
-const Popup = (props) => {
+const AlertPopup = (props) => {
   const { text, status, button_text, handleAccept, setOpenPopup } = props;
 
   const handleClose = () => {
     setOpenPopup(!Popup.open);
   };
   return (
-    <div className="container">
+    <div className="container-alert-popup">
       <div className="container-popup">
         <div className="popup">
           <h4>{text ? text : ""}</h4>
@@ -33,4 +33,4 @@ const Popup = (props) => {
   );
 };
 
-export default Popup;
+export default AlertPopup;

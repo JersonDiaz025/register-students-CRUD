@@ -1,0 +1,53 @@
+.modal {
+    width: 100%;
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(0.6px);
+    ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 48.5%;
+    left: 50%;
+    right: 50%;
+    position: absolute;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.container_modal {
+    position: relative;
+    width: 100%;
+    min-width: 250px;
+    height: 100%;
+    box-shadow: 1px 1px 15px rgba(7, 7, 7, 0.589);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(246, 242, 242, 0.807);
+}
+
+.loader {
+    height: 120px;
+    width: 120px;
+    border-top: 5px solid #1fcc61;
+    border-right: 5px solid transparent;
+    border-radius: 50%;
+    animation: 1s spin linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

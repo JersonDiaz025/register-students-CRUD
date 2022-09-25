@@ -3,7 +3,7 @@ import React, { createContext, useReducer } from 'react';
 import Reducer from './storeReducer';
 
 const initialStore = {
-    user: { name_user: "", isLogged: null },
+    user: { name_user: "", email:"", password:"", isLogged: null },
     navbar: { openModalUser: false },
     sidebar: { openSidebar: false },
     dark_mode: { activeDarkMode: false },

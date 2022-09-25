@@ -20,7 +20,7 @@ const signUp = async (req, res) => {
         const tokenUser = jwt.sign({ id: savedUser._id }, config.SECRET, {
             expiresIn: 86400 // 1 day
         })
-        res.status(200).json({value: true, response: 'Successfully registered', token: tokenUser });
+        res.status(200).json({ success: true, response: 'Successfully registered', token: tokenUser });
 
     } catch (error) {
         console.log(error)
@@ -36,16 +36,16 @@ const signIn = async (req, res) => {
         // verifi posible exist users
         const verifyUserExistent = await User.findOne({ email: email });
 
-        if (!verifyUserExistent) return res.status(400).json({ value: false, response: 'User not found' });
+        if (!verifyUserExistent) return res.status(400).json({ success: false, response: 'User not found' });
 
         const verifyPass = await User.comparePassword(password, verifyUserExistent.password);
 
         if (!verifyPass) {
-            return res.status(401).json({value: false, response: 'Invalid passwod' });
+            return res.status(401).json({ success: false, response: 'Invalid passwod' });
 
         } else {
             const token = jwt.sign({ id: verifyUserExistent._id }, config.SECRET, { expiresIn: 86400 });
-            return res.status(200).json({ value: true, response: 'Welcome', user: { username: verifyUserExistent.username, email:verifyUserExistent.email, password:password, token } });
+            return res.status(200).json({ success: true, response: `${'Welcome '+`${verifyUserExistent.username}`}`, user: { username: verifyUserExistent.username, email:verifyUserExistent.email, password:password, token } });
             // res.setHeader('Set-Cookie', token)
 
             // serialized

@@ -18,12 +18,11 @@ export const managerLogin = (dispatch) => {
         try {
             if (loginData.email !== '' && loginData.password !== '') {
                 const { data } = await postDataLogin(loginData);
-                console.log(data)
                 dispatch({
                     type: "MSG_POPUP",
                     payload: { openPopup: true, msgResponse: data }
                 })
-                if (data?.response === 'Welcome') {
+                if (data?.success) {
                     setLocalStorage(data.user);
                     navigate('/', { replace: true });
                     getUserToken(dispatch);

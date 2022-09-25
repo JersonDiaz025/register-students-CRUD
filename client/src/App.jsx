@@ -11,7 +11,7 @@ import {configRoutes} from "./Routes-config/routes";
 function App() {
 
   const [store, dispatch] = useContext(Context);
-  const { sidebar, user, msgPopup } = store;
+  const { sidebar, user, msgPopup, dark_mode } = store;
   const { openPopup, msgResponse } = msgPopup;
   const { openSidebar } = sidebar;
   const { isLogged } = user;
@@ -23,30 +23,33 @@ function App() {
   
   return (
     <Router>
-      <main className="dashboard-container">
+      <main
+        // className="dashboard-container"
+        className={`dashboard-container`}
+      >
         <div>
           {isLogged && (
             <>
               <Navbar store={store} dispatch={dispatch} />
               {openSidebar && <Sidebar dispatch={dispatch} />}
             </>
-            )}
-            {true? (
-              <>
-                {openPopup && <PopupMsg msgResponse={msgResponse} />}
-                <Routes>
-                  {routes?.map(({ path, element: Component, props }) => (
-                    <Route
-                      path={path}
-                      element={<Component props={props} dispatch={dispatch} />}
-                      key={path.length}
-                    />
-                  ))}
-                </Routes>
-              </>
-            ) : (
-              <Loader />
-              )}
+          )}
+          {data?.data ? (
+            <>
+              {openPopup && <PopupMsg msgResponse={msgResponse} />}
+              <Routes>
+                {routes?.map(({ path, element: Component, props }) => (
+                  <Route
+                    path={path}
+                    element={<Component props={props} dispatch={dispatch} />}
+                    key={path.length}
+                  />
+                ))}
+              </Routes>
+            </>
+          ) : (
+            <Loader />
+          )}
         </div>
       </main>
     </Router>

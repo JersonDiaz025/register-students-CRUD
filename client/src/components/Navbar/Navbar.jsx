@@ -35,7 +35,7 @@ const Navbar = (props) => {
         <div className="container-links-nav">
           {links_navbar?.map(
             ({ to, className, text, icon: Image, classIcon }) => (
-              <Link to={to} className="links-navbar">
+              <Link to={to} className="links-navbar" key={text.length}>
                 <Image className={classIcon} />
                 <span>{text}</span>
                 <div className="line-span"></div>

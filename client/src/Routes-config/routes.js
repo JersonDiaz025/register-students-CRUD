@@ -8,8 +8,6 @@ import { getData } from "../hooks/useGetData";
 import Profile from "../pages/profile/Profile";
 
 export function configRoutes(user) {
-    console.log(user)
-    
     const { data, updateStudent } = getData();
     
     const routes = [
@@ -19,7 +17,7 @@ export function configRoutes(user) {
         { path: "/register", element: RegisterStudent, props: updateStudent},
         { path: "/signUp", element: Register },
         { path: "/signIn", element: Login },
-        { path: "/profile", element: Profile}
+        { path: "/profile", element: Profile, props: user }
     ]
     return {
         data,

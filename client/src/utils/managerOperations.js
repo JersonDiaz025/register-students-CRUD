@@ -2,6 +2,7 @@ import axios from "axios";
 
 const BASE_URL = 'http://localhost:3000'
 
+
 // get data students
 const getInfoStudents = async () => {
     try {
@@ -36,10 +37,11 @@ const postData = async (data) => {
                 "x-access-token": ""
             }
         })
-        return response
+        return response;
 
     } catch (err) {
-        console.log(err)
+        const { response } = err;
+        return response;
     }
 }
 // ---------------------------------------------------register and login---------------------------------------
@@ -51,12 +53,11 @@ const postDataRegister = async (dataLogin) => {
             email: email,
             password: password
         });
-
         return response;
+
     } catch (err) {
         const { response } = err;
-        return response
-
+        return response;
     }
 }
 

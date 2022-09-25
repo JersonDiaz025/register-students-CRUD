@@ -4,6 +4,7 @@
     width: 100%;
     z-index: 5000;
     height: 18vh;
+    position: absolute;
 }
 
 .container-notifi {

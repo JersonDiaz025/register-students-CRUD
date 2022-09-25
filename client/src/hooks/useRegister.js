@@ -22,7 +22,7 @@ export const managerDataRegister = (dispatch) => {
                     type: "MSG_POPUP",
                     payload: { openPopup: true, msgResponse: data }
                 })
-                if (data?.response === 'Successfully registered') {
+                if (data?.success) {
                     navigate("/signIn", { replace: true })
                 }
                 setTimeout(() => {

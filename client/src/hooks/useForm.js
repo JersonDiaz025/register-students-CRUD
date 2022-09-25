@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { postData } from "../utils/managerOperations";
 
-export const managerDataForm = (updateStudent) => {
+export const managerDataForm = (updateStudent, dispatch) => {
 
-  const [data, setData] = useState({
+  const [dataStudent, setData] = useState({
     name: [],
     calification: [],
     email: [],
@@ -15,7 +15,17 @@ export const managerDataForm = (updateStudent) => {
   // When the form is submitted, prevent the default action, and send the data to the server using Axios.
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await postData(data);
+    const { data } = await postData(dataStudent);
+    dispatch({
+      type: "MSG_POPUP",
+      payload: { openPopup: true, msgResponse: data }
+    })
+    setTimeout(() => {
+      dispatch({
+        type: "MSG_POPUP",
+        payload: { openPopup: false, msgResponse: null }
+      })
+    }, 3000)
     setData({
       name: [],
       calification: [],
@@ -24,19 +34,19 @@ export const managerDataForm = (updateStudent) => {
       direction: [],
       asignatura: [],
     });
-    updateStudent();
+    // updateStudent();
   };
 
   // When the user changes the value of the input, update the data object with the new value.
   const handleChange = (event) => {
     const { target } = event;
     const { name, value } = target;
-    const values = { ...data, [name]: [value] };
+    const values = { ...dataStudent, [name]: [value] };
     setData(values);
   };
 
   return {
-    data,
+    data: dataStudent,
     handleSubmit,
     handleChange,
   };

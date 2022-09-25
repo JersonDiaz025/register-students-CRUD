@@ -21,8 +21,8 @@ const PopupUser = (props) => {
         <div className="popup-user">
           <div className="perfil">
             <FaUserAlt className="icon-user-popup" />
-            <Link to="/profile">
-              <span className="text-user">Perfil</span>
+            <Link to="/profile" className="text-user">
+              <span>Perfil</span>
             </Link>
           </div>
           <div className="perfil">

@@ -16,9 +16,10 @@
     --white-color: #EAEBED;
     --ig-primary-background: 255, 255, 255;
 }
-/* *{
+.dark *{
     background: var(--dark);
-} */
+    /* #293145 */
+}
 body{
     margin: 0;
     font-family: "Haas Grot Text R Web","Helvetica Neue","Helvetica","Arial","sans-serif";

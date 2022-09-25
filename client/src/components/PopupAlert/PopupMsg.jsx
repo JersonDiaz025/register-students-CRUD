@@ -4,11 +4,11 @@ import { VscPassFilled } from 'react-icons/vsc';
 
 const PopupMsg = (props) => {
   const { msgResponse } = props;
-  const { value, response } = msgResponse;
+  const { success, response } = msgResponse;
    return (
      <div className="container-header-notification">
        <div className="container-notifi">
-         {value ? (
+         {success ? (
            <>
              <div className="content-left" />
              <VscPassFilled className="icon-popup-sucess" />

@@ -2,9 +2,11 @@ import "./index.css";
 import Title from "../Title/Title";
 import { managerDataForm } from "../../hooks/useForm";
 
-const RegisterStudent = ({props}) => {
+const RegisterStudent = ({ props, dispatch }) => {
   // destructuring dates from hooks
-  const { data, handleSubmit, handleChange } = managerDataForm(props?.updateStudent);
+  const { data, handleSubmit, handleChange } = managerDataForm(
+    props?.updateStudent, dispatch
+  );
 
   const values = {
     name: data.name[0] ? data.name[0] : "",
@@ -17,8 +19,10 @@ const RegisterStudent = ({props}) => {
 
   return (
     <div className="container-main-form">
-      <Title data={"ADD STUDENT"} stylesTitle={`${"title-add-student"}`} />
-      <div className="line-bottom" />
+      <div className="container-title-add-student">
+        <Title data={"ADD STUDENT"} stylesTitle={`${"title-add-student"}`} />
+        <div className="line-bottom" />
+      </div>
       <div className="container-form">
         <div className="container-header">
           <img

@@ -37,6 +37,7 @@ const Sidebar = (props) => {
             {links_navbar?.map(
               ({ to, className, text, icon: Image, classIcon }) => (
                 <Link
+                  key={text.length}
                   to={to}
                   className={className}
                   onClick={() => dispatch({ type: "ACTION_SIDEBAR" })}

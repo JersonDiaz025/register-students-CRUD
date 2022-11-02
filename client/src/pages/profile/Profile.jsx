@@ -3,9 +3,11 @@ import Title from "../../components/Title/Title";
 import ImageUser from "../../components/ImageUser";
 
 const Profile = ({props}) => {
+  
+  const { user } = props;
+  const { email, password, name_user, isLogged } = user;
 
-  const { email, password, name_user, isLogged } = props;
-    return (
+  return (
       <div className="main-profile">
         <div className="container-title-profile">
           <Title data="Profile" stylesTitle={`title-profile`} />

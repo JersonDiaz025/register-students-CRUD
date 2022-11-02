@@ -1,14 +1,9 @@
 
-
 // const types = {
 //     authSign: 'authSignIn',
 //     autLogOut: 'authLogOut',
 //     // chageLogged: 'is - logged'
 // }
-
-// const initialStore = {
-//         user: { user: '', isLogged: null }
-//     }
 
 
 const Reducer = (state, action) => {
@@ -43,7 +38,23 @@ const Reducer = (state, action) => {
                 ...state,
                 msgPopup: action.payload,
             }
-        
+        case "DATA_MODAL_EDIT":
+            return {
+                ...state,
+                dataUserUpdate: action.payload,
+            }
+        //open modal for updates user dates
+        case "OPEN_MODAL_UPDATE_USER":
+            return {
+                ...state,
+                openModalUpdate: { isOpenModal: !state.openModalUpdate.isOpenModal },
+            }
+        case "POPUP_DELETE_USER":
+            return {
+                ...state,
+                popupDeleteStudent: { isOpen: !state.popupDeleteStudent.isOpen, payload: action.payload },
+            }
+            
         default:
             return state;
     }

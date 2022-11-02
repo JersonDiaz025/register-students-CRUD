@@ -1,18 +1,15 @@
 import "./index.css";
 
 const AlertPopup = (props) => {
-  const { text, status, button_text, handleAccept, setOpenPopup } = props;
+  const { text, button_text, handleAccept, dispatch } = props;
 
-  const handleClose = () => {
-    setOpenPopup(!Popup.open);
-  };
   return (
     <div className="container-alert-popup">
       <div className="container-popup">
         <div className="popup">
           <h4>{text ? text : ""}</h4>
           <div className="icon">
-            <span className="span" onClick={handleClose}>
+            <span className="span" onClick={() => { dispatch({ type: "POPUP_DELETE_USER" }) }}>
               X
             </span>
           </div>

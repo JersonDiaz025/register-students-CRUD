@@ -3,7 +3,7 @@ import Title from "../Title/Title";
 import { managerDataUpdate } from "../../hooks/useDataUpdate";
 
 const ModalEdit = (props) => {
-  const { text_title, text_button, text_button_close, handleCloseModal } =
+  const { text_title, text_button, text_button_close, dispatch } =
     props;
 
   // get info from hook
@@ -94,9 +94,9 @@ const ModalEdit = (props) => {
           </div>
           <div className="container-btn-modal">
             <button
-              type="submit"
+              // type="submit"
               className="btn-close"
-              onClick={(e) => handleCloseModal(e)}
+              onClick={(e) => {dispatch({ type: "OPEN_MODAL_UPDATE_USER" })}}
             >
               {text_button_close}
             </button>

@@ -20,7 +20,7 @@ const getInfoStudents = async () => {
 }
 
 // Method POST
-const postData = async (data) => {
+const postData = async (data, token) => {
 
     const params = {
         calification: parseInt(data?.calification[0]),
@@ -34,7 +34,7 @@ const postData = async (data) => {
         const response = await axios.post(`${BASE_URL}/add-student-data`, params, {
             headers: {
                 "Content-Type": "application/json",
-                "x-access-token": ""
+                "Autorization": token
             }
         })
         return response;
@@ -76,19 +76,20 @@ const postDataLogin = async (loginData) => {
 }
 
 // Method PUT
-const putData = async (dataUpdated) => {
+const putData = async (dataUpdated, token) => {
     const { id, name, calification, phone_number, email, direction, asignatura } = dataUpdated;
     const params = { calification, direction, email, name,phone_number, asignatura }
     try {
         const response = await axios.put(`${BASE_URL}/update-students/${id}`,params,{
             headers: {
                 "Content-Type": "application/json",
-                "x-access-token": 'update token'
+                "Autorization": token
             }
         });
         return response
     } catch (err) {
-        console.log(err)
+        const { response } = err;
+        return response
     }
 }
 
@@ -98,13 +99,14 @@ const deleteInfo = async (_id, token) => {
         const response = await axios.delete(`${BASE_URL}/delete-students/${_id}`, {
             headers: {
                 "Content-Type": "application/json",
-                "x-access-token": 'delete token'
+                "Autorization": token
             }
         })
 
         return response
     } catch (err) {
-        console.log(err)
+        const { response } = err;
+        return response
     }
 }
 

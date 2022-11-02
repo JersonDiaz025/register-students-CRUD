@@ -1,6 +1,9 @@
 import {useState, useEffect} from 'react';
 
-export const findResult = (data) => {
+export const findResult = (props) => {
+  // get data table filter
+  const { data } = props;
+  
   const [filterData, setFilterdData] = useState("");
 
   const [orders, setOrders] = useState();

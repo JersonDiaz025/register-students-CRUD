@@ -1,7 +1,4 @@
 const RegisterStudents = require('../models/register-students');
-// const passport = require('passport')
-// const UsersRegister = require('../models/users');
-// const { signUp, signIn } = require('../auth/local-auth');
 const controller = {};
 
 // controller route home
@@ -36,7 +33,7 @@ controller.postDataFormulary = async (req, res) => {
     });
     try {
         await students.save();
-        res.json({ response: 'student saved successfully' })
+        res.status(200).json({ success: true, response: 'Student saved successfully' })
     } catch (err) {
         console.log(err);
     }
@@ -79,7 +76,7 @@ controller.updateInfoStudents = async (req, res) => {
                 asignatura: asignatura,
             }
         });
-        res.json('dato actualizado')
+        res.json({ success: true, response: 'Successfully updated student'})
     } catch (err) {
         console.log(err)
     }
@@ -91,7 +88,7 @@ controller.deleteStudents = async (req, res) => {
     const id = req.params.id;
     try {
         await RegisterStudents.findByIdAndDelete({ _id: id })
-        res.json(`usuario con el ${id} eliminado`)
+        res.json({ success: true, response:"User deleted successfully"})
     } catch (err) {
         console.log(err)
     }

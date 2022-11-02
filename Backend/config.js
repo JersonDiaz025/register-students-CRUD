@@ -1,3 +1,3 @@
 module.exports = {
-    SECRET: 'REGISTER-STUDENTS'
+    SECRET: 'REGISTER-STUDENTS2'
 };

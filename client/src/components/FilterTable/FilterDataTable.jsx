@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import Content from "../../pages/dataTableUser/Content";
 import { findResult } from "../../hooks/useFilter";
 
-const FilterTable = ({ props }) => {
-  const { filterData, orders, _handleChange } = findResult(props?.data);
+const FilterTable = ({ props, dispatch }) => {
+
+  const { filterData, orders, _handleChange } = findResult(props);
   return (
     <div>
       <div className="container-title">
@@ -25,7 +26,7 @@ const FilterTable = ({ props }) => {
         </div>
         <hr className="hr"></hr>
       </div>
-      <Content updateStudent={props?.updateStudent} orders={orders} />
+      <Content props={props} orders={orders} dispatch={dispatch} />
     </div>
   );
 };

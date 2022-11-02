@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const managerDataUpdate = (props) => {
 
-    const { handleSendUpdate, dataEdit } = props;
+  const { handleSendUpdate, dataUserUpdate } = props;
     const {
       _id,
       name,
@@ -11,7 +11,7 @@ export const managerDataUpdate = (props) => {
       email,
       asignatura,
       direction,
-    } = dataEdit;
+    } = dataUserUpdate;
 
     const [dataUpdated, setDataUpdated] = useState({
       name: name,

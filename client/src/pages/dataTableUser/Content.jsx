@@ -3,34 +3,41 @@ import ModalEdit from '../../components/UpdateUser/ModalEdit';
 import AlertPopup from "../../components/ConfirmationPopup/AlertPopup";
 import { managerHooks } from '../../hooks/useHooksModal';
 
-const Content = ({ orders, updateStudent }) => {
+const Content = (props) => {
   // import customHooks
-  const { dataEdit, openModal, popup, handleUpdate, handleCloseModal,
-    handleSendUpdate, handleAccept, handleDelete, setOpenPopup } = managerHooks(updateStudent);
+  const { orders, dispatch } = props;
+  const { dataUserUpdate, openModalUpdate, popupDeleteStudent } = props?.props.store;
+  const { payload } = popupDeleteStudent;
+  let name_student  = payload?.name_student;
+
+  const { handleUpdate, handleSendUpdate, handleAccept, handleDelete } = managerHooks(props);
 
   const ShowModal = () => {
     return (
       <>
-        {openModal?.open &&
-          <ModalEdit text_title={"Update Information"} text_button={"Save"}
-            text_button_close={"Cancel"} handleCloseModal={handleCloseModal}
+        {openModalUpdate?.isOpenModal && (
+          <ModalEdit
+            text_title={"Update Information"}
+            text_button={"Save"}
+            text_button_close={"Cancel"}
+            dispatch={dispatch}
             handleSendUpdate={handleSendUpdate}
-            dataEdit={dataEdit}
+            dataUserUpdate={dataUserUpdate}
           />
-        }
+        )}
       </>
-    )
+    );
   }
 
   const ShowPopup = () => {
     return (
       <>
-        {popup?.open && (
+        {popupDeleteStudent?.isOpen && (
           <AlertPopup
-            text={`Sure you want to delete? ${popup?.name_student[0]}`}
+            text={`Sure you want to delete? ${name_student}`}
             button_text={"Accept"}
             handleAccept={handleAccept}
-            setOpenPopup={setOpenPopup}
+            dispatch={dispatch}
           />
         )}
       </>
@@ -94,7 +101,9 @@ const Content = ({ orders, updateStudent }) => {
       </div>
     </div>
   ) : (
-    <div style={{width:"100%", display:"flex", justifyContent:"center"}}><h2>There is no results</h2></div>
+    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <h2 style={{color:"red"}}>There is no results..</h2>
+    </div>
   );
 }
 

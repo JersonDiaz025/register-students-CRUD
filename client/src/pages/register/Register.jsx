@@ -1,4 +1,4 @@
-import React from 'react';
+import "./index.css";
 import Title from '../../components/Title/Title';
 import { Link } from 'react-router-dom';
 import { managerDataRegister } from "../../hooks/useRegister";

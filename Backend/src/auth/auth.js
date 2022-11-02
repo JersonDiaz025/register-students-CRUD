@@ -45,7 +45,10 @@ const signIn = async (req, res) => {
 
         } else {
             const token = jwt.sign({ id: verifyUserExistent._id }, config.SECRET, { expiresIn: 86400 });
-            return res.status(200).json({ success: true, response: `${'Welcome '+`${verifyUserExistent.username}`}`, user: { username: verifyUserExistent.username, email:verifyUserExistent.email, password:password, token } });
+            return res.status(200).json({
+                success: true, response: `${'Welcome ' + `${verifyUserExistent.username}`}`,
+                user: { username: verifyUserExistent.username, email: verifyUserExistent.email, password: password, token }
+            });
             // res.setHeader('Set-Cookie', token)
 
             // serialized

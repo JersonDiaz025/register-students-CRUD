@@ -4,9 +4,9 @@ import { managerDataForm } from "../../hooks/useForm";
 
 const RegisterStudent = ({ props, dispatch }) => {
   // destructuring dates from hooks
-  const { data, handleSubmit, handleChange } = managerDataForm(
-    props?.updateStudent, dispatch
-  );
+
+  const { data, handleSubmit, handleChange } = managerDataForm(props, dispatch);
+  // console.log(props);
 
   const values = {
     name: data.name[0] ? data.name[0] : "",

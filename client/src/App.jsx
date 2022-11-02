@@ -15,7 +15,8 @@ function App() {
   const { openPopup, msgResponse } = msgPopup;
   const { openSidebar } = sidebar;
   const { isLogged } = user;
-  const {routes, data } = configRoutes(user);
+  const { routes, data } = configRoutes(store);
+
 
   useEffect(() => { 
     getUserToken(dispatch);
